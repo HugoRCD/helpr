@@ -23,6 +23,9 @@ const props = defineProps({
     type: Number,
     default: 4000,
   },
+  infos: {
+    type: String,
+  },
 });
 
 const emit = defineEmits(["close"]);
@@ -61,9 +64,14 @@ watch(
                   <ShieldExclamationIcon class="h-6 w-6 text-blue-400" aria-hidden="true" v-if="type === 'info'" />
                 </div>
                 <div class="flex flex-col gap-1">
-                  <p class="text-base font-medium text-primary">
-                    {{ $t(title) }}
-                  </p>
+                  <div class="flex items-center gap-1">
+                    <p class="text-base font-medium text-primary">
+                      {{ $t(title) }}
+                    </p>
+                    <p class="text-base font-medium text-primary" v-if="infos">
+                      {{ infos }}
+                    </p>
+                  </div>
                   <p class="text-sm text-muted" v-if="description">
                     {{ $t(description) }}
                   </p>

@@ -12,7 +12,7 @@ export async function useSignup(createUserInput: createUserInput) {
     useErrorToast(error.value.data.message);
     return;
   }
-  toastStore.showSuccessToast("signup.signup_success");
+  toastStore.showSuccessToast({ title: "signup.signup_success" });
   await useRouter().push("/auth/login");
 }
 
@@ -31,7 +31,7 @@ export async function useUpdateUser() {
   }
   if (!updatedUser.value) return;
   userStore.setUser(updatedUser.value);
-  toastStore.showSuccessToast("signup.signup_success");
+  toastStore.showSuccessToast({ title: "profile.profile_update_success" });
 }
 
 export async function useDeleteUser() {

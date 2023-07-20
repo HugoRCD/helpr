@@ -47,6 +47,7 @@ const toast = computed(() => {
     title: toastStore.getTitle,
     message: toastStore.getMessage,
     type: toastStore.getType,
+    infos: toastStore.getInfos,
   };
 });
 </script>
@@ -55,7 +56,14 @@ const toast = computed(() => {
   <Html :lang="$i18n.locale">
     <Body class="bg-primary m-0 p-0 text-primary">
       <LayoutEnvChecker />
-      <ToastsBasic :show="toast.show" :title="toast.title" :description="toast.message" :type="toast.type" @close="toastStore.closeToast()" />
+      <ToastsBasic
+        :show="toast.show"
+        :title="toast.title"
+        :description="toast.message"
+        :type="toast.type"
+        :infos="toast.infos"
+        @close="toastStore.closeToast()"
+      />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>

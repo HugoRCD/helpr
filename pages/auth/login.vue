@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { User } from "~/types/User";
-
 definePageMeta({
   name: "Login",
   title: "Login",
@@ -10,32 +8,16 @@ definePageMeta({
 const user = computed(() => useUserStore().getUser);
 
 watch(user, (user) => {
-  if (user) {
-    useRouter().push("/app/edit-profile");
-  }
+  if (user) useRouter().push("/app/edit-profile");
 });
 
 const login = ref("");
 const password = ref("");
 
 const loading = ref(false);
-const toastStore = useToastStore();
-
 async function signin() {
   loading.value = true;
-  const { data } = await useFetch<User>("/api/auth/login", {
-    method: "POST",
-    body: {
-      login: login.value,
-      password: password.value,
-    },
-  });
-  if (data.value) {
-    toastStore.showSuccessToast("login.welcome_back");
-    useUserStore().setUser(data.value);
-  } else {
-    toastStore.showErrorToast("error.unknown_error");
-  }
+  await useSignin(login.value, password.value);
   loading.value = false;
 }
 </script>
