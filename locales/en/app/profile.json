@@ -8,6 +8,7 @@
   "delete_my_account_description": "Once your account is deleted, all of your data will be permanently removed. This action cannot be undone.",
   "logout": "See you soon",
   "profile_update_confirmation": "Are you sure you want to update your profile ?",
+  "profile_update_confirmation_description": "The changes will be visible to all users in the final version of the application.",
   "profile_delete_confirmation": "Are you sure you want to delete your account ?",
   "profile_delete_confirmation_description": "Once your account is deleted, all of your data will be permanently removed. This action cannot be undone.",
   "update_profile": "Update profile",

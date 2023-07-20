@@ -1,6 +1,6 @@
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
-import { ExclamationTriangleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { ExclamationTriangleIcon, QuestionMarkCircleIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
   show: {
@@ -18,6 +18,11 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  type: {
+    type: String,
+    required: false,
+    default: "delete",
+  },
 });
 
 const emit = defineEmits(["close"]);
@@ -29,6 +34,20 @@ async function execCallback() {
   emit("close");
   loading.value = false;
 }
+
+const primaryButtonClass = computed(() => {
+  return `flex items-center gap-2 w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto ${
+    props.type === "delete" ? "bg-red-600 hover:bg-red-500" : "bg-accent hover:bg-accent/80"
+  }`;
+});
+
+const icon = computed(() => {
+  return props.type === "delete" ? ExclamationTriangleIcon : QuestionMarkCircleIcon;
+});
+
+const iconColor = computed(() => {
+  return props.type === "delete" ? "bg-red-600" : "bg-accent";
+});
 </script>
 
 <template>
@@ -67,8 +86,8 @@ async function execCallback() {
                 </button>
               </div>
               <div class="sm:flex sm:items-start">
-                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-600 sm:mx-0 sm:h-10 sm:w-10">
-                  <ExclamationTriangleIcon class="h-6 w-6 text-primary" aria-hidden="true" />
+                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10" :class="iconColor">
+                  <component :is="icon" class="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle as="h3" class="text-base font-semibold leading-6 text-primary">
@@ -82,13 +101,14 @@ async function execCallback() {
                 </div>
               </div>
               <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  class="flex items-center gap-2 w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                  @click="execCallback()"
-                >
+                <button type="button" :class="primaryButtonClass" @click="execCallback()">
                   <Loader v-if="loading" size="h-4 w-4" />
-                  <span>{{ $t("action.delete") }}</span>
+                  <span v-if="props.type === 'delete'">
+                    {{ $t("action.delete") }}
+                  </span>
+                  <span v-if="props.type === 'update'">
+                    {{ $t("action.update") }}
+                  </span>
                 </button>
                 <button
                   type="button"

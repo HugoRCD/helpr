@@ -46,7 +46,6 @@ export const useUserStore = defineStore("user", {
       this.$state = defaultUserState;
     },
     async updateUser(toast = true, confirmation = true) {
-      if (confirmation && !confirm("Are you sure you want to update your profile ?")) return;
       if (!this.user) return;
       const { data: updatedUser, error } = await useFetch<User>(`/api/user/${this.user.id}`, {
         method: "PUT",

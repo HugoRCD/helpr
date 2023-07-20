@@ -1,5 +1,14 @@
 {
   "cancel": "Cancel",
   "delete": "Delete",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "close": "Close",
+  "apply": "Apply",
+  "save": "Save",
+  "reset": "Reset",
+  "update": "Update",
+  "create": "Create",
+  "edit": "Edit",
+  "remove": "Remove",
+  "back": "Back"
 }

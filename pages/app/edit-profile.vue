@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { User } from "~/types/User";
+const { t } = useI18n();
 
 definePageMeta({
   name: "Edit Profile",
@@ -9,10 +10,13 @@ definePageMeta({
 const userStore = useUserStore();
 
 const user = userStore.getUser as User;
-const confirmModal = ref(false);
+const confirmDeleteModal = ref(false);
+const confirmUpdateModal = ref(false);
 
 const updateProfile = async () => {
+  const toastStore = useToastStore();
   await userStore.updateUser();
+  toastStore.showSuccessToast(t("profile.profile_update_success"));
 };
 
 async function deleteAccount() {
@@ -24,7 +28,7 @@ async function deleteAccount() {
 </script>
 
 <template>
-  <form class="space-y-6" @submit.prevent="updateProfile">
+  <div class="space-y-6">
     <div class="app-card">
       <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1">
@@ -70,7 +74,7 @@ async function deleteAccount() {
             <input :placeholder="$t('profile.firstname')" class="input w-full" v-model="user.cover" />
           </div>
           <div class="flex justify-end mt-5 gap-2">
-            <button type="submit" class="btn-primary py-1">
+            <button class="btn-primary py-1" @click="confirmUpdateModal = true">
               {{ $t("profile.save") }}
             </button>
           </div>
@@ -104,7 +108,7 @@ async function deleteAccount() {
             </div>
           </div>
           <div class="flex justify-end mt-5 gap-2">
-            <button type="submit" class="btn-primary py-1">
+            <button class="btn-primary py-1" @click="confirmUpdateModal = true">
               {{ $t("profile.save") }}
             </button>
           </div>
@@ -118,17 +122,26 @@ async function deleteAccount() {
         <p>{{ $t("profile.delete_my_account_description") }}</p>
       </div>
       <div class="mt-5">
-        <button type="button" class="bg-red-600 text-inverted px-4 py-2 rounded-md sm:text-sm" @click="confirmModal = true">
+        <button type="button" class="bg-red-600 text-inverted px-4 py-2 rounded-md sm:text-sm" @click="confirmDeleteModal = true">
           {{ $t("profile.delete_my_account") }}
         </button>
       </div>
-      <ModalsConfirmDelete
+      <ModalsConfirm
         :title="$t('profile.profile_delete_confirmation')"
         :description="$t('profile.profile_delete_confirmation_description')"
-        :show="confirmModal"
-        @close="confirmModal = false"
+        :show="confirmDeleteModal"
+        @close="confirmDeleteModal = false"
         :callback="deleteAccount"
+        type="delete"
+      />
+      <ModalsConfirm
+        :title="$t('profile.profile_update_confirmation')"
+        :description="$t('profile.profile_update_confirmation_description')"
+        :show="confirmUpdateModal"
+        @close="confirmUpdateModal = false"
+        :callback="updateProfile"
+        type="update"
       />
     </div>
-  </form>
+  </div>
 </template>

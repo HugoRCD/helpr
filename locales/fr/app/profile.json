@@ -8,6 +8,7 @@
   "delete_my_account_description": "Une fois votre compte supprimé, toutes vos données seront définitivement supprimées. Cette action est irréversible.",
   "logout": "A bientôt",
   "profile_update_confirmation": "Êtes-vous sûr de vouloir mettre à jour votre profil ?",
+  "profile_update_confirmation_description": "Les informations de votre profil sont publiques et seront visibles par tous les utilisateurs de l'application.",
   "profile_delete_confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?",
   "profile_delete_confirmation_description": "Une fois votre compte supprimé, toutes vos données seront définitivement supprimées. Cette action est irréversible.",
   "update_profile": "Mettre à jour le profil",
