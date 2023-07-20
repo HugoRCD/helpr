@@ -7,8 +7,6 @@ definePageMeta({
 });
 
 const username = ref("");
-const firstname = ref("");
-const lastname = ref("");
 const email = ref("");
 const password = ref("");
 const passwordConfirm = ref("");
@@ -23,8 +21,6 @@ const signup = async () => {
   loading.value = true;
   await useSignup({
     username: username.value,
-    firstname: firstname.value,
-    lastname: lastname.value,
     email: email.value,
     password: password.value,
   });
@@ -43,18 +39,6 @@ const signup = async () => {
     <div class="sm:mx-auto sm:w-full sm:max-w-md mt-12">
       <form class="space-y-4" @submit.prevent="signup">
         <input id="username" name="username" autocomplete="username" required :placeholder="$t('signup.username')" class="input w-full" v-model="username" />
-        <div class="flex flex-row gap-2">
-          <input
-            id="firstname"
-            name="firstname"
-            autocomplete="firstname"
-            required
-            :placeholder="$t('signup.firstname')"
-            class="input w-full"
-            v-model="firstname"
-          />
-          <input id="lastname" name="lastname" autocomplete="lastname" required :placeholder="$t('signup.lastname')" class="input w-full" v-model="lastname" />
-        </div>
         <input id="email" name="email" type="email" autocomplete="email" required :placeholder="$t('signup.email')" class="input w-full" v-model="email" />
         <input
           id="password"

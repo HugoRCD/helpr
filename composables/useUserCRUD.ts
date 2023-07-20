@@ -3,13 +3,12 @@ import { User } from "~/types/User";
 
 export async function useSignup(createUserInput: createUserInput) {
   const toastStore = useToastStore();
-  const { error } = await useFetch("/api/auth/signup", {
+  const { error, data } = await useFetch("/api/auth/signup", {
     method: "POST",
     body: createUserInput,
   });
-  console.log(error);
-  if (error.value) {
-    useErrorToast(error.value.data.message);
+  if (error.value || !data.value) {
+    toastStore.showErrorToast({ title: "error.unknown_error" });
     return;
   }
   toastStore.showSuccessToast({ title: "signup.signup_success" });

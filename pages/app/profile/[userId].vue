@@ -14,8 +14,17 @@ if (error.value !== null && !user.value) {
   throw createError({ statusCode: 404, message: "User not found" });
 }
 
+const userName = computed(() => {
+  if (!user.value) throw createError({ statusCode: 404, message: "User not found" });
+  if (user.value.firstname && user.value.lastname) {
+    return user.value.firstname + " " + user.value.lastname;
+  } else {
+    return user.value.username;
+  }
+});
+
 useHead({
-  title: "Profile - " + user.value?.firstname + " " + user.value?.lastname,
+  title: "Profile - " + userName,
   meta: [
     {
       name: "description",
@@ -47,7 +56,7 @@ useHead({
               <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div class="mt-6 min-w-0 flex-1 sm:hidden 2xl:block">
                   <div class="flex items-center justify-between">
-                    <h1 class="truncate text-2xl font-bold text-primary">{{ user.firstname }} {{ user.lastname }}</h1>
+                    <h1 class="truncate text-2xl font-bold text-primary">{{ userName }}</h1>
                     <div class="flex items-center space-x-2 cursor-pointer" @click="copyProfileLink(user.id)">
                       <LinkIcon class="h-5 w-5 text-muted" />
                     </div>
@@ -61,7 +70,7 @@ useHead({
             </div>
             <div class="hidden min-w-0 flex-1 sm:block 2xl:hidden">
               <div class="flex items-center justify-between">
-                <h1 class="truncate text-2xl font-bold text-primary">{{ user.firstname }} {{ user.lastname }}</h1>
+                <h1 class="truncate text-2xl font-bold text-primary">{{ userName }}</h1>
                 <div class="flex items-center space-x-2 cursor-pointer" @click="copyProfileLink(user.id)">
                   <LinkIcon class="h-5 w-5 text-muted" />
                   <p class="text-sm text-muted">
@@ -71,7 +80,7 @@ useHead({
               </div>
               <div class="sm:col-span-2 mt-5">
                 <dt class="text-sm font-medium text-gray-500">Bio</dt>
-                <dd class="mt-1 max-w-prose space-y-5 text-sm text-primary" v-html="user.bio || bio" />
+                <dd class="mt-1 max-w-prose space-y-5 text-sm text-primary" v-html="user.bio" />
               </div>
             </div>
           </div>
