@@ -21,7 +21,7 @@ const props = defineProps({
   },
   duration: {
     type: Number,
-    default: 2000,
+    default: 4000,
   },
 });
 
@@ -52,27 +52,27 @@ watch(
       >
         <div v-if="show" class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-secondary shadow-lg border-primary border-[1px]">
           <div class="p-4">
-            <div class="flex items-start">
-              <div class="flex-shrink-0">
-                <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" v-if="type === 'success'" />
-                <XCircleIcon class="h-6 w-6 text-red-400" aria-hidden="true" v-if="type === 'error'" />
-                <InformationCircleIcon class="h-6 w-6 text-yellow-400" aria-hidden="true" v-if="type === 'warning'" />
-                <ShieldExclamationIcon class="h-6 w-6 text-blue-400" aria-hidden="true" v-if="type === 'info'" />
+            <div class="flex justify-between" :class="description ? 'items-start' : 'items-center'">
+              <div class="flex gap-2">
+                <div>
+                  <CheckCircleIcon class="h-6 w-6 text-green-400" aria-hidden="true" v-if="type === 'success'" />
+                  <XCircleIcon class="h-6 w-6 text-red-400" aria-hidden="true" v-if="type === 'error'" />
+                  <InformationCircleIcon class="h-6 w-6 text-yellow-400" aria-hidden="true" v-if="type === 'warning'" />
+                  <ShieldExclamationIcon class="h-6 w-6 text-blue-400" aria-hidden="true" v-if="type === 'info'" />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <p class="text-base font-medium text-primary">
+                    {{ $t(title) }}
+                  </p>
+                  <p class="text-sm text-muted" v-if="description">
+                    {{ $t(description) }}
+                  </p>
+                </div>
               </div>
-              <div class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-base font-medium text-primary">
-                  {{ title }}
-                </p>
-                <p class="mt-1 text-sm text-muted" v-if="description">
-                  {{ description }}
-                </p>
-              </div>
-              <div class="ml-4 flex flex-shrink-0">
-                <button type="button" @click="emit('close')" class="inline-flex rounded-md bg-secondary text-gray-400 hover:text-gray-500 focus:outline-none">
-                  <span class="sr-only">Close</span>
-                  <XMarkIcon class="h-5 w-5" aria-hidden="true" />
-                </button>
-              </div>
+              <button type="button" @click="emit('close')" class="inline-flex rounded-md bg-secondary text-gray-400 hover:text-gray-500 focus:outline-none">
+                <span class="sr-only">Close</span>
+                <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+              </button>
             </div>
           </div>
         </div>

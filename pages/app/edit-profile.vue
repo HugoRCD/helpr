@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { User } from "~/types/User";
-const { t } = useI18n();
 
 definePageMeta({
   name: "Edit Profile",
@@ -12,19 +11,6 @@ const userStore = useUserStore();
 const user = userStore.getUser as User;
 const confirmDeleteModal = ref(false);
 const confirmUpdateModal = ref(false);
-
-const updateProfile = async () => {
-  const toastStore = useToastStore();
-  await userStore.updateUser();
-  toastStore.showSuccessToast(t("profile.profile_update_success"));
-};
-
-async function deleteAccount() {
-  await useFetch("/api/user/" + user?.id, {
-    method: "DELETE",
-  });
-  await useRouter().push("/");
-}
 </script>
 
 <template>
@@ -131,7 +117,7 @@ async function deleteAccount() {
         :description="$t('profile.profile_delete_confirmation_description')"
         :show="confirmDeleteModal"
         @close="confirmDeleteModal = false"
-        :callback="deleteAccount"
+        :callback="useDeleteUser"
         type="delete"
       />
       <ModalsConfirm
@@ -139,7 +125,7 @@ async function deleteAccount() {
         :description="$t('profile.profile_update_confirmation_description')"
         :show="confirmUpdateModal"
         @close="confirmUpdateModal = false"
-        :callback="updateProfile"
+        :callback="useUpdateUser"
         type="update"
       />
     </div>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { t } = useI18n();
-
 import { User } from "~/types/User";
 
 definePageMeta({
@@ -33,10 +31,10 @@ async function signin() {
     },
   });
   if (data.value) {
-    toastStore.showSuccessToast(t("login.welcome_back") + " " + data.value.username);
+    toastStore.showSuccessToast("login.welcome_back");
     useUserStore().setUser(data.value);
   } else {
-    toastStore.showErrorToast(t("error.unknown_error"));
+    toastStore.showErrorToast("error.unknown_error");
   }
   loading.value = false;
 }

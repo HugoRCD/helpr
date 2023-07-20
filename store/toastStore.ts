@@ -30,13 +30,13 @@ export const useToastStore = defineStore({
     },
   },
   actions: {
-    showSuccessToast(title = "Success", message?: string) {
+    showSuccessToast(title = "success", message?: string) {
       this.show = true;
       this.message = message || "";
       this.title = title;
       this.type = "success";
     },
-    showErrorToast(title = "Error", message?: string) {
+    showErrorToast(title = "error", message?: string) {
       this.show = true;
       this.message = message || "";
       this.title = title;

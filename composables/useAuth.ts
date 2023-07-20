@@ -25,8 +25,7 @@ export async function useLogout(): Promise<void> {
   await useFetch("/api/auth/logout", {
     method: "POST",
   });
-  // useSuccessToast(t("profile.logout") + " " + user.value?.username ?? "");
-  toastStore.showSuccessToast("Success", "You have been logged out");
+  toastStore.showSuccessToast("profile.logout");
   userStore.logout();
   await useRouter().push("/auth/login");
 }
