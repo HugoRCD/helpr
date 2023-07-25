@@ -86,7 +86,7 @@ const features = computed(() => [
               </span>
             </span>
           </h1>
-          <NuxtLink class="drop-shadow-xl mt-5 flex justify-center gap-6" to="/auth/connect">
+          <NuxtLink class="drop-shadow-xl mt-5 flex justify-center gap-6" to="/auth/signup">
             <button type="button" class="hover-shadow-gradient btn-primary py-1 px-10 mt-4 flex items-center group">
               {{ t("home.start") }}
               <ArrowLongRightIcon class="w-5 h-5 ml-2 text-inverted group-hover:translate-x-1 transition-transform duration-300" />
@@ -150,7 +150,7 @@ const features = computed(() => [
             {{ t("home.cta.description") }}
           </p>
           <div class="mt-10 flex justify-center gap-6 flex-col sm:flex-row">
-            <NuxtLink to="/auth/connect" class="flex justify-center">
+            <NuxtLink to="/auth/signup" class="flex justify-center">
               <button type="button" class="btn-primary py-1">
                 {{ t("home.start") }}
               </button>

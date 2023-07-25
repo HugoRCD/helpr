@@ -10,6 +10,9 @@ const username = ref("");
 const email = ref("");
 const password = ref("");
 const passwordConfirm = ref("");
+const invitationCode = ref("");
+
+const invitation_code = useRuntimeConfig().public.invitationCode;
 
 const loading = ref(false);
 
@@ -18,6 +21,10 @@ const disabled = computed(() => {
 });
 
 const signup = async () => {
+  if (invitation_code !== invitationCode.value) {
+    useToastStore().showErrorToast({ title: "signup.invalid_invitation_code" });
+    return;
+  }
   loading.value = true;
   await useSignup({
     username: username.value,
@@ -59,6 +66,17 @@ const signup = async () => {
           :placeholder="$t('signup.confirm_password')"
           class="input w-full"
           v-model="passwordConfirm"
+        />
+        <input
+          v-if="invitation_code"
+          id="invitation-code"
+          name="invitation-code"
+          type="text"
+          autocomplete="invitation-code"
+          required
+          :placeholder="$t('signup.invitation_code')"
+          class="input w-full"
+          v-model="invitationCode"
         />
         <ButtonPrimary
           :full-width="true"

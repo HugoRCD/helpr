@@ -8,5 +8,7 @@
   "confirm_password": "Confirm Password",
   "signup": "Sign up",
   "already_have_an_account": "Already have an account? Sign in",
-  "signup_success": "You have successfully registered"
+  "signup_success": "You have successfully registered",
+  "invitation_code": "Invitation code",
+  "invalid_invitation_code": "Invalid invitation code"
 }

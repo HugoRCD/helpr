@@ -65,6 +65,7 @@ export default defineNuxtConfig({
       },
     },
     public: {
+      invitationCode: process.env.INVITATION_CODE,
       googleClientId: process.env.GOOGLE_CLIENT_ID,
       appDomain: process.env.FRONTEND_URL,
       appEnv: process.env.APP_ENV,
