@@ -1,6 +1,11 @@
 {
   "start": "Get started",
   "workflow": "workflow",
+  "launch": "Launch in",
+  "days": "days",
+  "hours": "hours",
+  "minutes": "minutes",
+  "seconds": "seconds",
   "details": {
     "first": "Unlike any",
     "tool": "tool",

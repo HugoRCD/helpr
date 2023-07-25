@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowLongRightIcon } from "@heroicons/vue/24/outline";
-import ProviderRow from "~/components/ProviderRow.vue";
-import Promo from "~/components/Promo.vue";
+import dayjs from "dayjs";
+
 const { t } = useI18n();
 
 definePageMeta({
@@ -59,6 +59,19 @@ const features = computed(() => [
     image: "privacy.webp",
   },
 ]);
+
+const countdown = ref(`0 ${t("home.days")} 0 ${t("home.hours")} 0 ${t("home.minutes")} 0 ${t("home.seconds")}`);
+
+setInterval(() => {
+  const now = dayjs();
+  const end = dayjs(useRuntimeConfig().public.releaseDate);
+  const diff = end.diff(now, "second");
+  const days = Math.floor(diff / 86400);
+  const hours = Math.floor((diff % 86400) / 3600);
+  const minutes = Math.floor((diff % 3600) / 60);
+  const seconds = Math.floor(diff % 60);
+  countdown.value = `${days} ${t("home.days")} ${hours} ${t("home.hours")} ${minutes} ${t("home.minutes")} ${seconds} ${t("home.seconds")}`;
+}, 1000);
 </script>
 
 <template>
@@ -92,6 +105,11 @@ const features = computed(() => [
               <ArrowLongRightIcon class="w-5 h-5 ml-2 text-inverted group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </NuxtLink>
+          <div class="flex flex-col items-center justify-center mt-10">
+            <button class="flex items-center flex-col mt-3 gap-1 text-muted bg-primary-opacity/50 rounded-full px-6 py-2 border border-accent/30">
+              {{ t("home.launch") }} {{ countdown }}
+            </button>
+          </div>
         </div>
       </div>
 

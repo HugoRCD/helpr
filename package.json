@@ -41,13 +41,16 @@
     "@vercel/analytics": "^1.0.1",
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
+    "bcrypt": "^5.1.0",
     "consola": "^3.1.0",
     "crypto-js": "^4.1.1",
+    "dayjs": "^1.11.9",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.13.0",
     "google-auth-library": "^8.8.0",
+    "jsonwebtoken": "^9.0.0",
     "nuxt": "^3.6.1",
     "nuxt-headlessui": "^1.1.4",
     "nuxt-mailer": "^0.11.0",
@@ -60,8 +63,6 @@
     "sass": "^1.62.1",
     "stripe": "^11.18.0",
     "typescript": "^4.9.5",
-    "vue-sweetalert2": "^5.0.5",
-    "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^9.0.0"
+    "vue-sweetalert2": "^5.0.5"
   }
 }

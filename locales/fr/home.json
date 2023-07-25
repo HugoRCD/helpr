@@ -1,6 +1,11 @@
 {
   "start": "Commencer",
   "workflow": "workflow",
+  "launch": "Lancement dans",
+  "days": "jours",
+  "hours": "heures",
+  "minutes": "minutes",
+  "seconds": "secondes",
   "details": {
     "first": "Comme aucun autres",
     "tool": "outils",
