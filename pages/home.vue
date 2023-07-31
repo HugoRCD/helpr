@@ -59,19 +59,6 @@ const features = computed(() => [
     image: "privacy.webp",
   },
 ]);
-
-const countdown = ref(`0 ${t("home.days")} 0 ${t("home.hours")} 0 ${t("home.minutes")} 0 ${t("home.seconds")}`);
-
-setInterval(() => {
-  const now = dayjs();
-  const end = dayjs(useRuntimeConfig().public.releaseDate);
-  const diff = end.diff(now, "second");
-  const days = Math.floor(diff / 86400);
-  const hours = Math.floor((diff % 86400) / 3600);
-  const minutes = Math.floor((diff % 3600) / 60);
-  const seconds = Math.floor(diff % 60);
-  countdown.value = `${days} ${t("home.days")} ${hours} ${t("home.hours")} ${minutes} ${t("home.minutes")} ${seconds} ${t("home.seconds")}`;
-}, 1000);
 </script>
 
 <template>
@@ -80,7 +67,7 @@ setInterval(() => {
       <!-- Hero section -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative py-16">
         <div class="backdrop-shadow bg-accent scale-150 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute z-0"></div>
-        <div class="flex flex-col items-center justify-center z-10 gap-4 hidden lg:flex">
+        <div class="flex-col items-center justify-center z-10 gap-4 hidden lg:flex">
           <ProviderRow :nb="6" />
           <ProviderRow :nb="10" />
           <ProviderRow :nb="6" />
@@ -105,11 +92,6 @@ setInterval(() => {
               <ArrowLongRightIcon class="w-5 h-5 ml-2 text-inverted group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </NuxtLink>
-          <div class="flex flex-col items-center justify-center mt-10">
-            <button class="flex items-center flex-col mt-3 gap-1 text-muted bg-primary-opacity/50 rounded-full px-6 py-2 border border-accent/30">
-              {{ t("home.launch") }} {{ countdown }}
-            </button>
-          </div>
         </div>
       </div>
 

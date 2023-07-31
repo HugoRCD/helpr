@@ -27,6 +27,7 @@ model User {
   cover             String             @default("https://uynsrkwqyplqhfrmdaqw.supabase.co/storage/v1/object/public/avatars/default-cover")
   emailVerification EmailVerification?
   resetPassword     ResetPassword?
+  credentials       Credentials[]
 }
 
 model EmailVerification {
@@ -43,4 +44,15 @@ model ResetPassword {
   id        Int      @id @default(autoincrement())
   userId    Int      @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Credentials {
+  id           Int     @id @default(autoincrement())
+  providerId   String  @unique
+  provider     String
+  accessToken  String
+  userId       Int
+  expiresAt    Int?
+  refreshToken String?
+  User         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

@@ -37,6 +37,9 @@ import fr_error from "./fr/error.json";
 import en_action from "./en/action.json";
 import fr_action from "./fr/action.json";
 
+import en_providers from "./en/app/providers.json";
+import fr_providers from "./fr/app/providers.json";
+
 const messages = {
   en: {
     navigation: en_navigation,
@@ -52,6 +55,7 @@ const messages = {
     profile: en_profile,
     error: en_error,
     action: en_action,
+    providers: en_providers,
   },
   fr: {
     navigation: fr_navigation,
@@ -67,6 +71,7 @@ const messages = {
     profile: fr_profile,
     error: fr_error,
     action: fr_action,
+    providers: fr_providers,
   },
 };
 
