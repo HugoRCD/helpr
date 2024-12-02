@@ -32,7 +32,7 @@
     "@nestjs/passport": "9.0.0",
     "@nestjs/platform-express": "9.0.0",
     "@nestjs/schedule": "2.1.0",
-    "@nestjs/swagger": "6.1.4",
+    "@nestjs/swagger": "8.0.7",
     "@nestjs/typeorm": "10.0.2",
     "@notionhq/client": "2.2.3",
     "@prisma/client": "4.9.0",
