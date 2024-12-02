@@ -44,7 +44,7 @@
     "nuxt-headlessui": "1.1.4",
     "nuxt-mailer": "0.11.0",
     "nuxt-vue3-google-signin": "0.0.8",
-    "openai": "3.2.1",
+    "openai": "4.74.0",
     "pinia": "2.1.1",
     "prisma": "6.0.1",
     "resend": "4.0.1",
