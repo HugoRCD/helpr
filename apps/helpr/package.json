@@ -21,7 +21,7 @@
   "devDependencies": {
     "@headlessui/vue": "1.7.13",
     "@heroicons/vue": "2.0.18",
-    "@linear/sdk": "2.6.0",
+    "@linear/sdk": "33.0.0",
     "@nuxt/devtools": "1.6.1",
     "@nuxt/image": "1.8.1",
     "@nuxtjs/color-mode": "3.3.0",
