@@ -36,7 +36,7 @@
     "@vueuse/core": "9.13.0",
     "@vueuse/nuxt": "9.13.0",
     "bcrypt": "5.1.0",
-    "crypto-js": "4.1.1",
+    "crypto-js": "4.2.0",
     "dayjs": "1.11.9",
     "google-auth-library": "8.8.0",
     "jsonwebtoken": "9.0.0",
