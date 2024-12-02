@@ -47,7 +47,7 @@
     "cookie-parser": "1.4.6",
     "crypto-js": "4.2.0",
     "deepl-node": "1.8.0",
-    "googleapis": "110.0.0",
+    "googleapis": "144.0.0",
     "graphql": "16.6.0",
     "mysql": "2.18.1",
     "mysql2": "2.3.3",
