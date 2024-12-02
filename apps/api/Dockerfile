@@ -1,4 +1,4 @@
-FROM node:18-alpine as helpr-api
+FROM node:22.11.0-alpine as helpr-api
 
 ARG DATABASE_URL
 ARG MAILER_HOST
