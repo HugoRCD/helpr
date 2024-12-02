@@ -1,0 +1,539 @@
+{
+  "services": [
+    {
+      "name": "Github",
+      "actions": [
+        {
+          "title": "Create Branch",
+          "description": "Create an Branch on Github",
+          "endpoint": "github",
+          "name": "create-branch",
+          "variables": [
+            {
+              "name": "Branch name",
+              "value": "{branch_name}"
+            },
+            {
+              "name": "Branch from",
+              "value": "{branch_from}"
+            },
+            {
+              "name": "Github repo",
+              "value": "{github_repo}"
+            }
+          ]
+        },
+        {
+          "title": "Create Pull Request",
+          "description": "Create an pull request on Github",
+          "endpoint": "github",
+          "name": "create-pull-request",
+          "variables": [
+            {
+              "name": "Pull Request name",
+              "value": "{pull_request_name}"
+            },
+            {
+              "name": "Pull Request from",
+              "value": "{pull_request_from}"
+            },
+            {
+              "name": "Pull Request to",
+              "value": "{pull_request_to}"
+            },
+            {
+              "name": "Github repo",
+              "value": "{github_repo}"
+            }
+          ]
+        },
+        {
+          "title": "Create ChangeLog",
+          "description": "Create an changelog on Github",
+          "endpoint": "github",
+          "name": "create-changelog",
+          "variables": [
+            {
+              "name": "Changelog name",
+              "value": "{changelog_name}"
+            },
+            {
+              "name": "Changelog from",
+              "value": "{changelog_from}"
+            },
+            {
+              "name": "Changelog to",
+              "value": "{changelog_to}"
+            },
+            {
+              "name": "Github repo",
+              "value": "{github_repo}"
+            }
+          ]
+        },
+        {
+          "title": "Create Issue",
+          "description": "Create an issue on Github",
+          "endpoint": "github",
+          "name": "create-issue",
+          "variables": [
+            {
+              "name": "Issue name",
+              "value": "{issue_name}"
+            },
+            {
+              "name": "Issue description",
+              "value": "{issue_description}"
+            },
+            {
+              "name": "Github repo",
+              "value": "{github_repo}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Linear": [
+        {
+          "title": "Assign Ticket",
+          "description": "Assign a ticket to a user on Linear",
+          "endpoint": "linear",
+          "name": "assign-ticket",
+          "variables": [
+            {
+              "name": "Ticket ID",
+              "value": "{ticket_id}"
+            },
+            {
+              "name": "Assignee ID",
+              "value": "{assignee_id}"
+            }
+          ]
+        },
+        {
+          "title": "Create Ticket",
+          "description": "Create a ticket on Linear",
+          "endpoint": "linear",
+          "name": "create-ticket",
+          "variables": [
+            {
+              "name": "Ticket name",
+              "value": "{ticket_name}"
+            },
+            {
+              "name": "Ticket description",
+              "value": "{ticket_description}"
+            },
+            {
+              "name": "Ticket assignee",
+              "value": "{ticket_assignee}"
+            },
+            {
+              "name": "Ticket labels",
+              "value": "{ticket_labels}"
+            },
+            {
+              "name": "Ticket priority",
+              "value": "{ticket_priority}"
+            },
+            {
+              "name": "Ticket state",
+              "value": "{ticket_state}"
+            },
+            {
+              "name": "Ticket type",
+              "value": "{ticket_type}"
+            }
+          ]
+        },
+        {
+          "title": "Create Project",
+          "description": "Create a project on Linear",
+          "endpoint": "linear",
+          "name": "create-project",
+          "variables": [
+            {
+              "name": "Project name",
+              "value": "{project_name}"
+            },
+            {
+              "name": "Project description",
+              "value": "{project_description}"
+            },
+            {
+              "name": "Project assignee",
+              "value": "{project_assignee}"
+            },
+            {
+              "name": "Project labels",
+              "value": "{project_labels}"
+            },
+            {
+              "name": "Project priority",
+              "value": "{project_priority}"
+            },
+            {
+              "name": "Project state",
+              "value": "{project_state}"
+            },
+            {
+              "name": "Project type",
+              "value": "{project_type}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Slack": [
+        {
+          "title": "Send Message",
+          "description": "Send a message to a channel on Slack",
+          "endpoint": "slack",
+          "name": "send-message",
+          "variables": [
+            {
+              "name": "Channel",
+              "value": "{channel}"
+            },
+            {
+              "name": "Message",
+              "value": "{message}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Linkedin": [
+        {
+          "title": "Create Post",
+          "description": "Create a post on Linkedin",
+          "endpoint": "linkedin",
+          "name": "create-post",
+          "variables": [
+            {
+              "name": "Post Text",
+              "value": "{post_text}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Notion": [
+        {
+          "title": "Create Item",
+          "description": "Create an item on Notion",
+          "endpoint": "notion",
+          "name": "create-item",
+          "variables": [
+            {
+              "name": "Item name",
+              "value": "{item_name}"
+            },
+            {
+              "name": "Item description",
+              "value": "{item_description}"
+            },
+            {
+              "name": "Item type",
+              "value": "{item_type}"
+            },
+            {
+              "name": "Item parent",
+              "value": "{item_parent}"
+            }
+          ]
+        },
+        {
+          "title": "Create Comment",
+          "description": "Create a comment on Notion",
+          "endpoint": "notion",
+          "name": "create-comment",
+          "variables": [
+            {
+              "name": "Comment text",
+              "value": "{comment_text}"
+            },
+            {
+              "name": "Comment parent",
+              "value": "{comment_parent}"
+            }
+          ]
+        },
+        {
+          "title": "Create Database",
+          "description": "Create a database on Notion",
+          "endpoint": "notion",
+          "name": "create-database",
+          "variables": [
+            {
+              "name": "Database name",
+              "value": "{database_name}"
+            },
+            {
+              "name": "Database description",
+              "value": "{database_description}"
+            },
+            {
+              "name": "Database parent",
+              "value": "{database_parent}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "DeepL": [
+        {
+          "title": "Translate",
+          "description": "Translate a text with DeepL",
+          "endpoint": "deepl",
+          "name": "translate",
+          "variables": [
+            {
+              "name": "Text",
+              "value": "{text}"
+            },
+            {
+              "name": "Source language",
+              "value": "{source_language}"
+            },
+            {
+              "name": "Target language",
+              "value": "{target_language}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "OpenAI": [
+        {
+          "title": "Create Completion",
+          "description": "Create a completion on OpenAI",
+          "endpoint": "openai",
+          "name": "create-completion",
+          "variables": [
+            {
+              "name": "Prompt",
+              "value": "{text}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Stripe": [
+        {
+          "title": "Create Product",
+          "description": "Create a product on Stripe",
+          "endpoint": "stripe",
+          "name": "create-product",
+          "variables": [
+            {
+              "name": "Product name",
+              "value": "{product_name}"
+            },
+            {
+              "name": "Product description",
+              "value": "{product_description}"
+            },
+            {
+              "name": "Price",
+              "value": "{price}"
+            },
+            {
+              "name": "Currency",
+              "value": "{currency}"
+            }
+          ]
+        },
+        {
+          "title": "Create Customer",
+          "description": "Create a customer on Stripe",
+          "endpoint": "stripe",
+          "name": "create-customer",
+          "variables": [
+            {
+              "name": "Customer name",
+              "value": "{customer_name}"
+            },
+            {
+              "name": "Customer email",
+              "value": "{customer_email}"
+            },
+            {
+              "name": "Customer phone",
+              "value": "{customer_phone}"
+            }
+          ]
+        },
+        {
+          "title": "Create Payment",
+          "description": "Create a payment on Stripe",
+          "endpoint": "stripe",
+          "name": "create-payment",
+          "variables": [
+            {
+              "name": "Payment amount",
+              "value": "{payment_amount}"
+            },
+            {
+              "name": "Payment currency",
+              "value": "{payment_currency}"
+            },
+            {
+              "name": "Payment customer",
+              "value": "{payment_customer}"
+            },
+            {
+              "name": "Payment description",
+              "value": "{payment_description}"
+            }
+          ]
+        },
+        {
+          "title": "Create Link",
+          "description": "Create a link on Stripe",
+          "endpoint": "stripe",
+          "name": "create-link",
+          "variables": [
+            {
+              "name": "Price",
+              "value": "{price}"
+            },
+            {
+              "name": "Quantity",
+              "value": "{quantity}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Google": {
+        "Gmail": [
+          {
+            "title": "Send Email",
+            "description": "Send an email with Gmail",
+            "endpoint": "gmail",
+            "name": "send-email",
+            "variables": [
+              {
+                "name": "To",
+                "value": "{to}"
+              },
+              {
+                "name": "Subject",
+                "value": "{subject}"
+              },
+              {
+                "name": "Body",
+                "value": "{body}"
+              }
+            ]
+          },
+          {
+            "title": "Create Draft",
+            "description": "Create a draft with Gmail",
+            "endpoint": "gmail",
+            "name": "create-draft",
+            "variables": [
+              {
+                "name": "To",
+                "value": "{to}"
+              },
+              {
+                "name": "Subject",
+                "value": "{subject}"
+              },
+              {
+                "name": "Body",
+                "value": "{body}"
+              }
+            ]
+          }
+        ],
+        "Calendar": [
+          {
+            "title": "Create Event",
+            "description": "Create an event on Google Calendar",
+            "endpoint": "calendar",
+            "name": "create-event",
+            "variables": [
+              {
+                "name": "Event name",
+                "value": "{event_name}"
+              },
+              {
+                "name": "Event description",
+                "value": "{event_description}"
+              },
+              {
+                "name": "Event start",
+                "value": "{event_start}"
+              },
+              {
+                "name": "Event end",
+                "value": "{event_end}"
+              }
+            ]
+          },
+          {
+            "title": "Create Calendar",
+            "description": "Create a calendar on Google Calendar",
+            "endpoint": "calendar",
+            "name": "create-calendar",
+            "variables": [
+              {
+                "name": "Calendar name",
+                "value": "{calendar_name}"
+              },
+              {
+                "name": "Calendar description",
+                "value": "{calendar_description}"
+              }
+            ]
+          }
+        ],
+        "Sheet": [
+          {
+            "title": "Create Sheet",
+            "description": "Create a sheet on Google Sheet",
+            "endpoint": "sheet",
+            "name": "create-sheet",
+            "variables": [
+              {
+                "name": "Sheet name",
+                "value": "{sheet_name}"
+              },
+              {
+                "name": "Sheet description",
+                "value": "{sheet_description}"
+              }
+            ]
+          },
+          {
+            "title": "Update Sheet",
+            "description": "Update a sheet on Google Sheet",
+            "endpoint": "sheet",
+            "name": "update-sheet",
+            "variables": [
+              {
+                "name": "Sheet name",
+                "value": "{sheet_name}"
+              },
+              {
+                "name": "Sheet description",
+                "value": "{sheet_description}"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
