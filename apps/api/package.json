@@ -23,7 +23,7 @@
   "dependencies": {
     "@apollo/client": "3.7.5",
     "@linear/sdk": "2.1.0",
-    "@nestjs-modules/mailer": "1.8.1",
+    "@nestjs-modules/mailer": "2.0.2",
     "@nestjs/common": "9.0.0",
     "@nestjs/config": "3.3.0",
     "@nestjs/core": "9.0.5",
