@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { User } from '~/types/User'
+import { User } from '~~/types/User'
 
 defineProps({
   user: {

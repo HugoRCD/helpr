@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CheckIcon } from '@heroicons/vue/24/outline'
-import { Plan, Plans } from '~/types/Pricing'
+import { Plan, Plans } from '~~/types/Pricing'
 
 definePageMeta({
   name: 'Pricing',

@@ -1,5 +1,5 @@
-import { useUser } from '~/composables/useAuth'
-import { Role } from '~/enums/Role'
+import { useUser } from '~~/composables/useAuth'
+import { Role } from '~~/enums/Role'
 
 export default defineNuxtRouteMiddleware(async () => {
   const user = await useUser()

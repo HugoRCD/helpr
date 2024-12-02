@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { User } from '~/types/User'
+import { User } from '~~/types/User'
 
 definePageMeta({
   name: 'Edit Profile',

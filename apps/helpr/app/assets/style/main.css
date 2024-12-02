@@ -1,9 +1,9 @@
+@import "animation.css";
+@import "themes/dark.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "animation";
-@import "themes/dark";
 
 @layer components {
   .app-card {
@@ -27,7 +27,7 @@
     @apply px-4 py-2 flex justify-center;
     @apply cursor-pointer;
 
-    &:disabled {
+    .btn-primary:disabled {
       @apply bg-accent;
       @apply cursor-not-allowed;
     }
@@ -85,7 +85,6 @@
 
 .spotlight {
   width: 100%;
-  // background: radial-gradient(33.82% 90% at 50% 0%, rgba(126, 61, 255, 0.17) 0%, rgba(126, 61, 255, 0) 100%);
   background: radial-gradient(33.82% 90% at 50% 0%, rgba(var(--accent-color), 0.17) 0%, rgba(var(--accent-color), 0) 100%);
 }
 

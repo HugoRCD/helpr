@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import LanguageSelector from '~/components/settings/LanguageSelector.vue'
-
 const { t } = useI18n()
 
 const userStore = useUserStore()

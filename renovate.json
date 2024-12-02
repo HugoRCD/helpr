@@ -1,6 +1,6 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "github>hugorcd/renovate-config"
+    "github>HugoRCD/renovate-config"
   ]
 }

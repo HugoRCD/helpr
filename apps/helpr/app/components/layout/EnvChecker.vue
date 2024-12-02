@@ -10,10 +10,10 @@ const env = process.env.NODE_ENV
 
 <style scoped>
 .env-checker {
-  &.development {
+  .env-checker.production {
     background-color: darkgreen;
   }
-  &.staging {
+  .env-checker.staging {
     background-color: yellow;
   }
 }

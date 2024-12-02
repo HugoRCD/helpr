@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ArrowLeftOnRectangleIcon, Bars3BottomLeftIcon, XMarkIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
-import { Role } from '~/enums/Role'
+import { Role } from '~~/enums/Role'
 
 const appNav = getNavigation('app')
 const userNav = getNavigation('user')

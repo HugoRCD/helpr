@@ -1,5 +1,5 @@
 import { OAuth2Client } from 'google-auth-library'
-import { GoogleTokens, GoogleUser } from '~/types/Google'
+import type { GoogleTokens, GoogleUser } from '~~/types/Google'
 
 function getOauth2Client() {
   const { clientId } = useRuntimeConfig().private.google

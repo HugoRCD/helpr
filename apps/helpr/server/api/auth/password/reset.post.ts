@@ -1,5 +1,5 @@
 import { H3Event } from 'h3'
-import { getResetPasswordByToken, updatePassword } from '~/server/app/authService'
+import { getResetPasswordByToken, updatePassword } from '~~/server/app/authService'
 
 export default eventHandler(async (event: H3Event) => {
   const body = await readBody(event)

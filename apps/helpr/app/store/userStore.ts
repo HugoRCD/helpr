@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { User } from '~/types/User'
+import type { User } from '~~/types/User'
 
 type UserState = {
   accessToken: string;
@@ -22,7 +22,7 @@ export const useUserStore = defineStore('user', {
     isAdmin(): boolean {
       if (this.user) {
         return this.user.role === 2
-      } 
+      }
       return false
     },
     getAccessToken(): string {

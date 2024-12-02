@@ -1,5 +1,5 @@
 import { H3Event } from 'h3'
-import { getEmailVerificationByToken, verifyEmail } from '~/server/app/authService'
+import { getEmailVerificationByToken, verifyEmail } from '~~/server/app/authService'
 
 export default eventHandler(async (event: H3Event) => {
   const body = await readBody(event)

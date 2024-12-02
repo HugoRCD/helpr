@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import LanguageSelector from '~/components/settings/LanguageSelector.vue'
-import ThemeSwitcher from '~/components/settings/ThemeSwitcher.vue'
-
 definePageMeta({
   name: 'Settings',
   title: 'Settings',

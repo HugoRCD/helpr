@@ -1,4 +1,4 @@
-import { EmailTemplate } from '~/server/app/mailerService'
+import type { EmailTemplate } from '~~/server/app/mailerService'
 
 const resetPassword = function(username: string, callbackUrl: string): EmailTemplate {
   const html = `

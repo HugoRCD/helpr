@@ -1,5 +1,4 @@
-import pkg, { User } from '@prisma/client'
-import { publicUser } from '~/types/User'
+import pkg, { type User } from '@prisma/client'
 
 const { PrismaClient } = pkg
 const prisma = new PrismaClient()

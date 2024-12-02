@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { PlusSmallIcon } from '@heroicons/vue/24/outline'
-import FlowPreview from '~/components/FlowPreview.vue'
-import ProviderCard from '~/components/ProviderCard.vue'
 
 const { t } = useI18n()
 definePageMeta({
@@ -174,7 +172,7 @@ const integrations = [
 
 <style scoped>
 .scroll-section {
-  &::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     height: 0;
   }
   scrollbar-width: none;

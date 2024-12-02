@@ -25,8 +25,8 @@ html {
   --accent-color-hover: 5, 150, 105;
   --accent-color-faded: rgba(5, 150, 105, 0.1);
 
-  --accent: #10B981; // Just to see the color only the -accent-color use in the app
-  --accent-hover: #059669; // Just to see the color only the -accent-color-hover use in the app
+  --accent: #10B981;
+  --accent-hover: #059669;
 
   --accent-primary: #FFF878;
   --accent-secondary: #2DFFF5;
@@ -37,8 +37,8 @@ html {
     --accent-color-hover: 199, 43, 255;
     --accent-color-faded: rgba(199, 43, 255, 0.1);
 
-    --accent: #EE49FD; // Just to see the color only the -accent-color use in the app
-    --accent-hover: #C72BFF; // Just to see the color only the -accent-color-hover use in the app
+    --accent: #EE49FD;
+    --accent-hover: #C72BFF;
 
     --accent-primary: #EE49FD;
     --accent-secondary: #5A069B;
@@ -49,8 +49,8 @@ html {
   --accent-color-hover: 255, 64, 102;
   --accent-color-faded: rgba(255, 64, 102, 0.1);
 
-  --accent: #FF4066; // Just to see the color only the -accent-color use in the app
-  --accent-hover: #FF4066; // Just to see the color only the -accent-color-hover use in the app
+  --accent: #FF4066;
+  --accent-hover: #FF4066;
 
   --accent-primary: #FFF16A;
   --accent-secondary: #FF4066;
@@ -61,8 +61,8 @@ html {
   --accent-color-hover: 4, 187, 244;
   --accent-color-faded: rgba(4, 187, 244, 0.1);
 
-  --accent: #04BBF4; // Just to see the color only the -accent-color use in the app
-  --accent-hover: #04BBF4; // Just to see the color only the -accent-color-hover use in the app
+  --accent: #04BBF4;
+  --accent-hover: #04BBF4;
 
   --accent-primary: #04BBF4;
   --accent-secondary: #3E0CAB;

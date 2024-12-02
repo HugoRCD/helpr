@@ -1,4 +1,4 @@
-import { EmailTemplate } from '~/server/app/mailerService'
+import type { EmailTemplate } from '~~/server/app/mailerService'
 
 const newUser = function(username: string, callbackUrl: string): EmailTemplate {
   const html = `

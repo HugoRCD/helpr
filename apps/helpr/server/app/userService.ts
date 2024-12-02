@@ -2,12 +2,13 @@ import bcrypt from 'bcrypt'
 import { isString } from '@vueuse/core'
 import { H3Event } from 'h3'
 import jwt from 'jsonwebtoken'
-import prisma, { formatUser } from '~/server/database/client'
-import { createUserInput, updateUserInput } from '~/server/api/user/user.dto'
-import resetPassword from '~/server/api/mailer/templates/reset-password'
-import { sendGmail } from '~/server/app/mailerService'
-import { generateEmailVerificationToken } from '~/server/app/authService'
-import { Role } from '~/enums/Role'
+import prisma, { formatUser } from '~~/server/database/client'
+import type { createUserInput, updateUserInput } from '~~/server/api/user/user.dto'
+import resetPassword from '~~/server/api/mailer/templates/reset-password'
+import { sendGmail } from '~~/server/app/mailerService'
+import { generateEmailVerificationToken } from '~~/server/app/authService'
+import { Role } from '~~/enums/Role'
+import type { User } from '~~/types/User'
 
 export async function createUser(userData: createUserInput) {
   const foundUser = await prisma.user.findFirst({
@@ -72,7 +73,7 @@ export async function getAllUsers() {
   })
 }
 
-export async function getUserByAuthToken(authToken: string) {
+export async function getUserByAuthToken(authToken: string): Promise<User | null> {
   const user = await prisma.user.findFirst({
     where: {
       authToken,

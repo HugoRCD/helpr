@@ -1,5 +1,5 @@
 import { H3Event } from 'h3'
-import { getGoogleInfos } from '~/server/app/providers/googleService'
+import { getGoogleInfos } from '~~/server/app/providers/googleService'
 
 export default eventHandler(async (event: H3Event) => {
   console.log('Called')

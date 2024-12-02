@@ -1,5 +1,4 @@
-import { useUserStore } from '~~/store/userStore'
-import { User } from '~~/types/User'
+import type { User } from '~~/types/User'
 
 export async function useUser(): Promise<User | null> {
   const authCookie = useCookie('authToken').value

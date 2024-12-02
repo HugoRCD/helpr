@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useUser } from '~/composables/useAuth'
-import { useToastStore } from '~/store/toastStore'
-
 useHead({
   title: useAppConfig().appTitle,
   meta: [

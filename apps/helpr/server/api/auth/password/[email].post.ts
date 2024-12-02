@@ -1,8 +1,8 @@
 import { H3Event } from 'h3'
-import { getUserByLogin } from '~/server/app/userService'
-import resetPassword from '~/server/api/mailer/templates/reset-password'
-import { sendGmail } from '~/server/app/mailerService'
-import { generateResetPasswordToken } from '~/server/app/authService'
+import { getUserByLogin } from '~~/server/app/userService'
+import resetPassword from '~~/server/api/mailer/templates/reset-password'
+import { sendGmail } from '~~/server/app/mailerService'
+import { generateResetPasswordToken } from '~~/server/app/authService'
 
 export default eventHandler(async (event: H3Event) => {
   const userEmail = event.context.params.email

@@ -1,7 +1,7 @@
-import { User } from '@prisma/client'
+import { type User } from '@prisma/client'
 import bcrypt from 'bcrypt'
-import prisma from '~/server/database/client'
-import { getUserById, getUserByLogin, setAuthToken } from '~/server/app/userService'
+import prisma from '~~/server/database/client'
+import { getUserById, getUserByLogin, setAuthToken } from '~~/server/app/userService'
 
 export async function login(login: string, password: string) {
   const user = await getUserByLogin(login)

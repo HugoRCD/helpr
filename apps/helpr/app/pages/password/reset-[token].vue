@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import ButtonPrimary from '~/components/ButtonPrimary.vue'
-import LanguageSelector from '~/components/settings/LanguageSelector.vue'
-
 const { t } = useI18n()
 
 definePageMeta({

@@ -1,6 +1,6 @@
 import { H3Event } from 'h3'
-import baseEmailTemplate from '~/server/api/mailer/templates/baseEmail'
-import { sendGmail } from '~/server/app/mailerService'
+import baseEmailTemplate from '~~/server/api/mailer/templates/baseEmail'
+import { sendGmail } from '~~/server/app/mailerService'
 
 export default eventHandler(async (event: H3Event) => {
   const body = await readBody(event)

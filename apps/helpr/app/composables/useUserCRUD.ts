@@ -1,5 +1,5 @@
-import { createUserInput } from '~/server/api/user/user.dto'
-import { User } from '~/types/User'
+import { createUserInput } from '~~/server/api/user/user.dto'
+import { User } from '~~/types/User'
 
 export async function useSignup(createUserInput: createUserInput) {
   const toastStore = useToastStore()

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeftOnRectangleIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
-import { Role } from '~/enums/Role'
+import { Role } from '~~/enums/Role'
 
 const appNav = getNavigation('app')
 const userNav = getNavigation('user')
