@@ -47,7 +47,7 @@
     "openai": "3.2.1",
     "pinia": "2.1.1",
     "prisma": "6.0.1",
-    "resend": "0.16.0",
+    "resend": "4.0.1",
     "stripe": "17.4.0",
     "typescript": "5.7.2",
     "vue-sweetalert2": "5.0.5"
