@@ -1,4 +1,3 @@
-import { useUser } from '~~/composables/useAuth'
 import { Role } from '~~/enums/Role'
 
 export default defineNuxtRouteMiddleware(async () => {
