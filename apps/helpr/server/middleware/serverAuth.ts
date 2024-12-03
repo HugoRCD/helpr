@@ -1,5 +1,4 @@
 import { H3Event } from 'h3'
-import { isString } from '@vueuse/core'
 import { getUserByAuthToken } from '~~/server/app/userService'
 import type { User } from '~~/types/User'
 
@@ -23,7 +22,6 @@ async function protectAuthRoute(event: H3Event): Promise<User | null> {
   if (event.path === undefined || !protectedRoutes.some((route) => event.path?.startsWith(route))) return null
 
   const authToken = getCookie(event, 'authToken')
-  const hasAuthToken = isString(authToken)
-  if (!hasAuthToken) return null
+  if (!authToken) return null
   return await getUserByAuthToken(authToken)
 }

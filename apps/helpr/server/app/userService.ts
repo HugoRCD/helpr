@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt'
-import { isString } from '@vueuse/core'
 import { H3Event } from 'h3'
 import jwt from 'jsonwebtoken'
 import prisma, { formatUser } from '~~/server/database/client'
@@ -118,8 +117,7 @@ export async function setAuthToken(userId: number) {
 
 export async function adminCheck(event: H3Event): Promise<boolean> {
   const authToken = getCookie(event, 'authToken')
-  const hasAuthToken = isString(authToken)
-  if (!hasAuthToken) return false
+  if (!authToken) return false
   const user = await getUserByAuthToken(authToken)
   if (!user) return false
   return user.role === Role.ADMIN
