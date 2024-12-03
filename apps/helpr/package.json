@@ -16,7 +16,8 @@
     "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "local:stripe": " stripe listen --forward-to localhost:3000/api/webhookStripe"
   },
   "devDependencies": {
     "@headlessui/vue": "1.7.23",

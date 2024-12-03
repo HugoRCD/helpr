@@ -14,6 +14,7 @@ export async function useUser(): Promise<User | null> {
       return null
     }
     useUserStore().setUser(data.value)
+    useUserStore().setSubscription(data.value.subscription)
   }
   return user
 }

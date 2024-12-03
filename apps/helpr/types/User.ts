@@ -1,4 +1,5 @@
 import { Role } from '~~/enums/Role'
+import type { Subscription } from '~~/types/Subscription'
 
 export type User = {
   id: number;
@@ -9,6 +10,8 @@ export type User = {
   avatar: string;
   magicLink?: string;
   isVerified: boolean;
+  stripeCustomerId?: string;
+  subscription?: Subscription[];
   cover: string;
   bio: string;
   role: Role;

@@ -213,7 +213,7 @@ async function testAction() {
                 class="w-full rounded-md border border-muted bg-primary py-2 pl-3 pr-10 shadow-sm focus:outline-none sm:text-sm"
                 :required="field.required"
               />
-              <div class="flex flex-col gap-6 md:items-center md:flex-row">
+              <div v-if="isPremium" class="flex flex-col gap-6 md:items-center md:flex-row">
                 <button
                   type="button"
                   class="flex flex-row gap-2 mt-2 cursor-pointer group items-center"

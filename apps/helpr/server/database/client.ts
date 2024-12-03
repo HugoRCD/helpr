@@ -20,5 +20,6 @@ export function formatUser(user: User) {
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
     stripeCustomerId: user.stripeCustomerId,
+    subscription: user.subscription,
   }
 }

@@ -11,6 +11,6 @@ export const Plans = {
   PREMIUM: {
     id: 'premium',
     name: 'Premium',
-    priceId: 'price_1MTtkUK9pLS9QZZT1eTz3Oyo',
+    priceId: 'price_1QRwxcK9pLS9QZZTthOmdsl6',
   },
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { User } from '~~/types/User'
+import type { User } from '~~/types/User'
 import { Plans } from '~~/types/Pricing'
 
 definePageMeta({
@@ -128,7 +128,7 @@ const confirmUpdateModal = ref(false)
         </div>
         <div class="mt-5 flex gap-4">
           <ClientOnly>
-            <form v-if="!subscription || subscription.length === 0" action="/api/stripe/subscribe" method="post">
+            <form v-if="!subscription || subscription.length === 0" action="/stripe/subscribe" method="post">
               <input type="hidden" name="userId" :value="user.id">
               <button
                 name="priceId"
@@ -139,7 +139,7 @@ const confirmUpdateModal = ref(false)
                 {{ $t("subscription.subscribe") }}
               </button>
             </form>
-            <form action="/api/stripe/createPortalSession" method="post">
+            <form action="/stripe/createPortalSession" method="post">
               <button
                 type="submit"
                 name="stripeCustomerId"
