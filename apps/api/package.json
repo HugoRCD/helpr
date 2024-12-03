@@ -11,6 +11,7 @@
     "start:prod": "node dist/src/main",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
