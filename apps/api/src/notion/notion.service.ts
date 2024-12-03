@@ -1,18 +1,19 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import { PrismaService } from "../prisma.service";
-import { Client } from "@notionhq/client";
-import { UserService } from "../user/user.service";
-import { ProviderService } from "../provider/provider.service";
-import { ProviderCredentials } from "@prisma/client";
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { Client } from '@notionhq/client'
+import { ProviderCredentials } from '@prisma/client'
+import { PrismaService } from '../prisma.service'
+import { UserService } from '../user/user.service'
+import { ProviderService } from '../provider/provider.service'
 import {
   createItemInDatabaseInput,
   createDatabaseInput,
   createComment,
-} from "./notion.type";
+} from './notion.type'
 
 @Injectable()
 export class NotionService {
+
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
@@ -24,50 +25,50 @@ export class NotionService {
     userId: number,
     accessToken: string,
   ): Promise<ProviderCredentials> {
-    const user = await this.userService.getUserById(userId);
-    if (!user) throw new BadRequestException("user_not_found");
+    const user = await this.userService.getUserById(userId)
+    if (!user) throw new BadRequestException('user_not_found')
     const notionClient = new Client({
       auth: accessToken,
-    });
+    })
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const notionUser = await notionClient.users.me();
-    if (!notionUser) throw new BadRequestException("invalid_credentials");
+    const notionUser = await notionClient.users.me()
+    if (!notionUser) throw new BadRequestException('invalid_credentials')
     return await this.providerService.addCredentials(
       user.id,
       notionUser.id,
-      "notion",
+      'notion',
       accessToken,
-    );
+    )
   }
 
   async createComment(userId: number, createComment: createComment) {
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "notion",
+      'notion',
       true,
-    );
+    )
     const notionClient = new Client({
       auth: accessToken,
-    });
+    })
     const response = await notionClient.comments.create({
       parent: {
-        type: "page_id",
+        type: 'page_id',
         page_id: createComment.notion_comment_pageId,
       },
       rich_text: [
         {
-          type: "text",
+          type: 'text',
           text: {
             content: createComment.notion_comment_text,
           },
         },
       ],
-    });
+    })
     return {
-      message: "comment_created",
+      message: 'comment_created',
       data: response,
-    };
+    }
   }
 
   async createDatabase(
@@ -76,20 +77,20 @@ export class NotionService {
   ) {
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "notion",
+      'notion',
       true,
-    );
+    )
     const notionClient = new Client({
       auth: accessToken,
-    });
+    })
     const response = await notionClient.databases.create({
       parent: {
-        type: "page_id",
+        type: 'page_id',
         page_id: createDatabaseInput.notion_database_pageId,
       },
       title: [
         {
-          type: "text",
+          type: 'text',
           text: {
             content: createDatabaseInput.notion_database_title,
           },
@@ -97,7 +98,7 @@ export class NotionService {
       ],
       description: [
         {
-          type: "text",
+          type: 'text',
           text: {
             content: createDatabaseInput.notion_database_description,
           },
@@ -108,11 +109,11 @@ export class NotionService {
           title: {},
         },
       },
-    });
+    })
     return {
-      message: "database_created",
+      message: 'database_created',
       data: response,
-    };
+    }
   }
 
   async createItemInDatabase(
@@ -121,12 +122,12 @@ export class NotionService {
   ) {
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "notion",
+      'notion',
       true,
-    );
+    )
     const notionClient = new Client({
       auth: accessToken,
-    });
+    })
     const response = await notionClient.pages.create({
       parent: {
         database_id: createItemInDatabaseInput.notion_item_databaseId,
@@ -144,12 +145,12 @@ export class NotionService {
       },
       children: [
         {
-          object: "block",
-          type: "paragraph",
+          object: 'block',
+          type: 'paragraph',
           paragraph: {
             rich_text: [
               {
-                type: "text",
+                type: 'text',
                 text: {
                   content: createItemInDatabaseInput.notion_item_description,
                 },
@@ -158,10 +159,11 @@ export class NotionService {
           },
         },
       ],
-    });
+    })
     return {
-      message: "item_created",
+      message: 'item_created',
       data: response,
-    };
+    }
   }
+
 }

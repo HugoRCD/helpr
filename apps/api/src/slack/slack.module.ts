@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { UserService } from "../user/user.service";
-import { PrismaService } from "../prisma.service";
-import { SlackService } from "./slack.service";
-import { SlackController } from "./slack.controller";
+import { Module } from '@nestjs/common'
+import { UserService } from '../user/user.service'
+import { PrismaService } from '../prisma.service'
+import { SlackService } from './slack.service'
+import { SlackController } from './slack.controller'
 
 @Module({
   imports: [],

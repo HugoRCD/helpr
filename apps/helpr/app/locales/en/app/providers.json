@@ -8,5 +8,6 @@
   "connect_provider": "Connect provider",
   "disconnect": "Disconnect",
   "already_connected": "You are already connected to",
-  "save": "Save"
+  "save": "Save",
+  "connect_github": "Connect GitHub"
 }

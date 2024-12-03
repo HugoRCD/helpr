@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { User } from '~~/types/User'
+import { Plans } from '~~/types/Pricing'
 
 definePageMeta({
   name: 'Edit Profile',
@@ -7,6 +8,7 @@ definePageMeta({
 })
 
 const userStore = useUserStore()
+const subscription = userStore.getSubscription
 
 const user = userStore.getUser as User
 const confirmDeleteModal = ref(false)
@@ -100,6 +102,54 @@ const confirmUpdateModal = ref(false)
               {{ $t("profile.save") }}
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-secondary shadow rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg font-medium leading-6 text-primary">
+          {{ $t("subscription.manage_subscription") }}
+        </h3>
+        <div class="my-2 max-w-xl text-sm text-muted">
+          <p>
+            {{ $t("subscription.description") }}
+          </p>
+        </div>
+        <div>
+          <div v-if="subscription && subscription.length > 0 && subscription[0].name === Plans.PREMIUM.name">
+            <i class="fas fa-check-circle text-green-600" />
+            {{ subscription[0].name }}
+          </div>
+          <div v-else>
+            <i class="fas fa-times-circle text-red-600" />
+            {{ $t("subscription.no_subscription") }}
+          </div>
+        </div>
+        <div class="mt-5 flex gap-4">
+          <client-only>
+            <form v-if="!subscription || subscription.length === 0" action="/api/stripe/subscribe" method="post">
+              <input type="hidden" name="userId" :value="user.id">
+              <button
+                name="priceId"
+                :value="Plans.PREMIUM.priceId"
+                type="submit"
+                class="rounded-md bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+              >
+                {{ $t("subscription.subscribe") }}
+              </button>
+            </form>
+            <form action="/api/stripe/createPortalSession" method="post">
+              <button
+                type="submit"
+                name="stripeCustomerId"
+                :value="user.stripeCustomerId"
+                class="rounded-md bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+              >
+                {{ $t("subscription.manage") }}
+              </button>
+            </form>
+          </client-only>
         </div>
       </div>
     </div>

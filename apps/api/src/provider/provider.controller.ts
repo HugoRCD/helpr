@@ -1,67 +1,69 @@
-import { JwtAuthGuard } from "../auth/guards/jwt.guard";
-import { RoleGuard } from "../auth/guards/role.guard";
-import { Body, Controller, Delete, Get, Post, UseGuards } from "@nestjs/common";
-import { ProviderService } from "./provider.service";
-import { JwtPayload } from "../auth/auth.service";
-import { CurrentUser } from "../auth/decorators/current-user.decorator";
+import { Body, Controller, Delete, Get, Post, UseGuards } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
+import { JwtAuthGuard } from '../auth/guards/jwt.guard'
+import { RoleGuard } from '../auth/guards/role.guard'
+import { JwtPayload } from '../auth/auth.service'
+import { CurrentUser } from '../auth/decorators/current-user.decorator'
+import { ProviderService } from './provider.service'
 import {
   createActionInput,
   createProviderInput,
   createTriggerInput,
-} from "./provider.type";
-import { ApiTags } from "@nestjs/swagger";
+} from './provider.type'
 
-@ApiTags("Provider")
+@ApiTags('Provider')
 @UseGuards(JwtAuthGuard, RoleGuard)
-@Controller("provider")
+@Controller('provider')
 export class ProviderController {
+
   constructor(private readonly providerService: ProviderService) {}
 
-  @Get("/providers")
+  @Get('/providers')
   async getProviders() {
-    return this.providerService.getProviders();
+    return this.providerService.getProviders()
   }
 
-  @Get("/get-credentials")
+  @Get('/get-credentials')
   async getCredentials(@CurrentUser() user: JwtPayload) {
-    return this.providerService.getCredentials(user.id);
+    return this.providerService.getCredentials(user.id)
   }
 
-  @Get("/get-available-actions")
+  @Get('/get-available-actions')
   async getAvailableActions() {
-    return await this.providerService.getAvailableActions();
+    return await this.providerService.getAvailableActions()
   }
 
-  @Get("/get-available-triggers")
+  @Get('/get-available-triggers')
   async getAvailableTriggers() {
-    return await this.providerService.getAvailableTriggers();
+    return await this.providerService.getAvailableTriggers()
   }
 
-  @Get("/user")
+  @Get('/user')
   async getUserProviders(@CurrentUser() user: JwtPayload) {
-    return this.providerService.getUserProviders(user.id);
+    return this.providerService.getUserProviders(user.id)
   }
 
-  @Post("/provider")
+  @Post('/provider')
   async manageProvider(@Body() provider: createProviderInput) {
-    return this.providerService.createOrUpdateProvider(provider);
+    return this.providerService.createOrUpdateProvider(provider)
   }
 
-  @Post("/action")
+  @Post('/action')
   async manageAction(@Body() action: createActionInput) {
-    return this.providerService.createOrUpdateAction(action);
+    return this.providerService.createOrUpdateAction(action)
   }
 
-  @Post("/trigger")
+  @Post('/trigger')
   async manageTrigger(@Body() trigger: createTriggerInput) {
-    return this.providerService.createOrUpdateTrigger(trigger);
+    return this.providerService.createOrUpdateTrigger(trigger)
   }
 
-  @Delete("/deconnect")
+  @Delete('/deconnect')
   async deconnectProvider(
     @CurrentUser() user: JwtPayload,
-    @Body("provider") provider: string,
+    @Body('provider') provider: string,
   ) {
-    return this.providerService.deconnectProvider(user.id, provider);
+    return this.providerService.deconnectProvider(user.id, provider)
   }
+
 }

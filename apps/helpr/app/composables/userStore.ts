@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { User } from '~~/types/User'
+import type { Subscription } from '~~/types/Subscription'
 
 type UserState = {
   accessToken: string;
@@ -31,6 +32,9 @@ export const useUserStore = defineStore('user', {
     getUser(): User | null {
       return this.user
     },
+    getSubscription(): Subscription[] | null {
+      return this.subscription
+    },
   },
   actions: {
     setVerified() {
@@ -40,6 +44,9 @@ export const useUserStore = defineStore('user', {
     },
     setUser(user: User) {
       this.user = user
+    },
+    setSubscription(subscription: Subscription[]) {
+      this.subscription = subscription
     },
     logout() {
       this.$state = defaultUserState

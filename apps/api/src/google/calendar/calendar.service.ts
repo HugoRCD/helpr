@@ -1,15 +1,16 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import { PrismaService } from "../../prisma.service";
-import { UserService } from "../../user/user.service";
-import { ProviderService } from "../../provider/provider.service";
-import { createCalendarInput, createEventInput } from "./calendar.type";
-import { google } from "googleapis";
-import { FlowService } from "../../flow/flow.service";
-import { LinearClient } from "@linear/sdk";
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { google } from 'googleapis'
+import { LinearClient } from '@linear/sdk'
+import { PrismaService } from '../../prisma.service'
+import { UserService } from '../../user/user.service'
+import { ProviderService } from '../../provider/provider.service'
+import { FlowService } from '../../flow/flow.service'
+import { createCalendarInput, createEventInput } from './calendar.type'
 
 @Injectable()
 export class CalendarService {
+
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
@@ -62,16 +63,16 @@ export class CalendarService {
   ): Promise<any> {
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "google",
+      'google',
       true,
-    );
+    )
     const oauth2Client = new google.auth.OAuth2(
-      this.configService.get("google.client_id"),
-      this.configService.get("google.client_secret"),
-      this.configService.get("google.callback_url"),
-    );
-    oauth2Client.setCredentials({ access_token: accessToken });
-    const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+      this.configService.get('google.client_id'),
+      this.configService.get('google.client_secret'),
+      this.configService.get('google.callback_url'),
+    )
+    oauth2Client.setCredentials({ access_token: accessToken })
+    const calendar = google.calendar({ version: 'v3', auth: oauth2Client })
     const res = await calendar.calendars.insert({
       requestBody: {
         summary: createCalendarInput.calendar_calendar_summary,
@@ -79,11 +80,11 @@ export class CalendarService {
         description: createCalendarInput.calendar_calendar_description,
         timeZone: createCalendarInput.calendar_calendar_timezone,
       },
-    });
+    })
     return {
-      message: "calendar_created",
+      message: 'calendar_created',
       data: res.data,
-    };
+    }
   }
 
   async createEvent(
@@ -92,16 +93,16 @@ export class CalendarService {
   ): Promise<any> {
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "google",
+      'google',
       true,
-    );
+    )
     const oauth2Client = new google.auth.OAuth2(
-      this.configService.get("google.client_id"),
-      this.configService.get("google.client_secret"),
-      this.configService.get("google.callback_url"),
-    );
-    oauth2Client.setCredentials({ access_token: accessToken });
-    const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+      this.configService.get('google.client_id'),
+      this.configService.get('google.client_secret'),
+      this.configService.get('google.callback_url'),
+    )
+    oauth2Client.setCredentials({ access_token: accessToken })
+    const calendar = google.calendar({ version: 'v3', auth: oauth2Client })
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const res = await calendar.events.insert({
@@ -119,39 +120,40 @@ export class CalendarService {
           timeZone: createEventInput.calendar_event_timezone,
         },
       },
-    });
+    })
     return {
-      message: "event_created",
+      message: 'event_created',
       data: res,
-    };
+    }
   }
 
   async getData(userId: number, variables: any) {
-    let calendarId = "";
+    let calendarId = ''
     if (variables && variables.calendar_event_calendar_id) {
-      calendarId = variables.calendar_event_calendar_id;
+      calendarId = variables.calendar_event_calendar_id
     }
     const { accessToken } = await this.providerService.getCredentialsByProvider(
       userId,
-      "google",
+      'google',
       true,
-    );
+    )
     const oauth2Client = new google.auth.OAuth2(
-      this.configService.get("google.client_id"),
-      this.configService.get("google.client_secret"),
-      this.configService.get("google.callback_url"),
-    );
-    oauth2Client.setCredentials({ access_token: accessToken });
-    const calendar = google.calendar({ version: "v3", auth: oauth2Client });
+      this.configService.get('google.client_id'),
+      this.configService.get('google.client_secret'),
+      this.configService.get('google.callback_url'),
+    )
+    oauth2Client.setCredentials({ access_token: accessToken })
+    const calendar = google.calendar({ version: 'v3', auth: oauth2Client })
     const res = await calendar.calendarList.list({
-      minAccessRole: "writer",
-    });
-    const calendars = res.data.items;
+      minAccessRole: 'writer',
+    })
+    const calendars = res.data.items
     const calendarList = calendars.map((calendar) => {
-      return { name: calendar.summary, value: calendar.id };
-    });
+      return { name: calendar.summary, value: calendar.id }
+    })
     return {
       calendar_event_calendar_id: calendarList,
-    };
+    }
   }
+
 }

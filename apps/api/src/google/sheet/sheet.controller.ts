@@ -1,17 +1,18 @@
-import { JwtAuthGuard } from "../../auth/guards/jwt.guard";
-import { RoleGuard } from "../../auth/guards/role.guard";
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
-import { Public } from "../../auth/decorators/public.decorator";
-import { SheetService } from "./sheet.service";
-import { JwtPayload } from "../../auth/auth.service";
-import { CurrentUser } from "../../auth/decorators/current-user.decorator";
-import { createSheetInput, updateSheetTitleInput } from "./sheet.type";
-import { ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
+import { JwtAuthGuard } from '../../auth/guards/jwt.guard'
+import { RoleGuard } from '../../auth/guards/role.guard'
+import { Public } from '../../auth/decorators/public.decorator'
+import { JwtPayload } from '../../auth/auth.service'
+import { CurrentUser } from '../../auth/decorators/current-user.decorator'
+import { SheetService } from './sheet.service'
+import { createSheetInput, updateSheetTitleInput } from './sheet.type'
 
 @UseGuards(JwtAuthGuard, RoleGuard)
-@ApiTags("Sheet")
-@Controller("sheet")
+@ApiTags('Sheet')
+@Controller('sheet')
 export class SheetController {
+
   constructor(private readonly sheetService: SheetService) {}
 
   /*  @Public()
@@ -28,19 +29,20 @@ export class SheetController {
     return await this.sheetService.createWebhook(user.id, teamId);
   }*/
 
-  @Post("create-sheet")
+  @Post('create-sheet')
   async createSheet(
     @CurrentUser() user: JwtPayload,
     @Body() sheet: createSheetInput,
   ) {
-    return await this.sheetService.createSheet(user.id, sheet);
+    return await this.sheetService.createSheet(user.id, sheet)
   }
 
-  @Post("update-sheet")
+  @Post('update-sheet')
   async updateSheet(
     @CurrentUser() user: JwtPayload,
     @Body() sheet: updateSheetTitleInput,
   ) {
-    return await this.sheetService.updateSheet(user.id, sheet);
+    return await this.sheetService.updateSheet(user.id, sheet)
   }
+
 }

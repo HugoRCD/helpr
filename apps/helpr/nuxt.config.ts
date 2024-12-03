@@ -16,10 +16,6 @@ export default defineNuxtConfig({
 
   css: ['~/assets/style/main.css'],
 
-  imports: {
-    dirs: ['store'],
-  },
-
   devtools: { enabled: true },
 
   compatibilityDate: '2024-11-06',
@@ -28,7 +24,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxt/image',
-    '@nuxtjs/robots',
     '@vueuse/nuxt',
     '@pinia/nuxt',
     'nuxt-vue3-google-signin',
@@ -52,7 +47,7 @@ export default defineNuxtConfig({
     private: {
       resendApiKey: '',
       authSecret: '',
-      refreshTokenSecret: '',
+      refreshSecret: '',
       encryptionKey: '',
       stripeSecretKey: '',
       openAiKey: '',
@@ -60,18 +55,19 @@ export default defineNuxtConfig({
         clientId: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
         clientSecret: process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET,
       },
-      linear: {
-        apiKey: '',
-      },
       github: {
         clientId: process.env.NUXT_OAUTH_GITHUB_CLIENT_ID,
         clientSecret: process.env.NUXT_OAUTH_GITHUB_CLIENT_SECRET,
       },
     },
     public: {
+      github: {
+        clientId: process.env.NUXT_OAUTH_GITHUB_CLIENT_ID,
+      },
       invitationCode: '',
       appEnv: process.env.NODE_ENV,
       apiUrl: '',
+      appUrl: process.env.NUXT_APP_URL || 'http://localhost:3000',
     },
   },
 
@@ -94,10 +90,5 @@ export default defineNuxtConfig({
     ],
     baseUrl: 'https://helpr.hrcd.fr',
     vueI18n: '~/i18n.config.ts',
-  },
-
-  robots: {
-    UserAgent: '*',
-    Disallow: '/app',
-  },
+  }
 })

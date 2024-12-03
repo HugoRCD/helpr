@@ -1,31 +1,31 @@
-import { prisma } from "../../../seed";
+import { prisma } from '../../../seed'
 import {
   createBranchAction,
   createIssueAction,
   createPullRequestAction,
   createReleaseAction,
-} from "./githubActions";
+} from './githubActions'
 import {
   issueCreatedTrigger,
   pullRequestCreatedTrigger,
-} from "./githubTriggers";
+} from './githubTriggers'
 
 export async function createGithubProvider() {
   const provider = await prisma.provider.create({
     data: {
-      name: "Github",
-      description: "Create branches, issues, pull requests, etc... on GitHub",
-      logo: "github-logo",
-      tokenLink: "https://github.com/settings/tokens?type=beta",
+      name: 'Github',
+      description: 'Create branches, issues, pull requests, etc... on GitHub',
+      logo: 'github-logo',
+      tokenLink: 'https://github.com/settings/tokens?type=beta',
     },
-  });
+  })
   // Actions
-  await createBranchAction(provider.id);
-  await createIssueAction(provider.id);
-  await createPullRequestAction(provider.id);
-  await createReleaseAction(provider.id);
+  await createBranchAction(provider.id)
+  await createIssueAction(provider.id)
+  await createPullRequestAction(provider.id)
+  await createReleaseAction(provider.id)
 
   // Triggers
-  await issueCreatedTrigger(provider.id);
-  await pullRequestCreatedTrigger(provider.id);
+  await issueCreatedTrigger(provider.id)
+  await pullRequestCreatedTrigger(provider.id)
 }

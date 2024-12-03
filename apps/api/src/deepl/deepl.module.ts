@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { UserService } from "../user/user.service";
-import { PrismaService } from "../prisma.service";
-import { DeeplService } from "./deepl.service";
-import { DeeplController } from "./deepl.controller";
+import { Module } from '@nestjs/common'
+import { UserService } from '../user/user.service'
+import { PrismaService } from '../prisma.service'
+import { DeeplService } from './deepl.service'
+import { DeeplController } from './deepl.controller'
 
 @Module({
   imports: [],

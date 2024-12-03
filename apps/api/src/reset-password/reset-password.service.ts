@@ -1,13 +1,14 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { MailingService } from "../mailing/mailing.service";
-import { UserService } from "../user/user.service";
-import { ConfigService } from "@nestjs/config";
-import { PrismaService } from "../prisma.service";
-import { ResetPassword } from "@prisma/client";
-import { hash, generateCode } from "../utils";
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { ResetPassword } from '@prisma/client'
+import { MailingService } from '../mailing/mailing.service'
+import { UserService } from '../user/user.service'
+import { PrismaService } from '../prisma.service'
+import { generateCode } from '../utils'
 
 @Injectable()
 export class ResetPasswordService {
+
   constructor(
     private prisma: PrismaService,
     private readonly mailingService: MailingService,
@@ -16,23 +17,23 @@ export class ResetPasswordService {
   ) {}
 
   async createResetToken(email: string): Promise<{ message: string }> {
-    const user = await this.userService.getUserByLogin(email);
+    const user = await this.userService.getUserByLogin(email)
     if (!user) {
-      throw new BadRequestException("user_not_found");
+      throw new BadRequestException('user_not_found')
     }
     const resetEntity: ResetPassword = await this.prisma.resetPassword.create({
       data: {
         userId: user.id,
         token: await generateCode(),
       },
-    });
-    const url = `${this.configService.get("frontend_url")}/reset-password-${
+    })
+    const url = `${this.configService.get('frontend_url')}/reset-password-${
       resetEntity.token
-    }`;
-    await this.mailingService.sendResetPassword(user, url);
+    }`
+    await this.mailingService.sendResetPassword(user, url)
     return {
-      message: "reset_password_email_sent",
-    };
+      message: 'reset_password_email_sent',
+    }
   }
 
   async resetPassword(
@@ -43,26 +44,26 @@ export class ResetPasswordService {
       where: {
         token,
       },
-    });
+    })
     if (!resetEntity) {
-      throw new BadRequestException("invalid_token");
+      throw new BadRequestException('invalid_token')
     }
-    const hashedPassword = await hash(password);
     await this.prisma.user.update({
       where: {
         id: resetEntity.userId,
       },
       data: {
-        password: hashedPassword,
+        password: password,
       },
-    });
+    })
     await this.prisma.resetPassword.delete({
       where: {
         id: resetEntity.id,
       },
-    });
+    })
     return {
-      message: "password_reset_success",
-    };
+      message: 'password_reset_success',
+    }
   }
+
 }

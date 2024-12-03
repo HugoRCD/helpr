@@ -1,7 +1,7 @@
-import pkg, { type User } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
+import type { User } from '~~/types/User'
 
-const { PrismaClient } = pkg
-const prisma = new PrismaClient()
+export const prisma = new PrismaClient()
 export default prisma
 
 export function formatUser(user: User) {

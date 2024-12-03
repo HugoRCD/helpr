@@ -21,7 +21,7 @@ const community = 'h-24 w-24'
 
 <template>
   <div class="flex items-center justify-center">
-    <nuxt-img
+    <NuxtImg
       preload
       class="w-full object-cover rounded-full"
       :class="size === 'normal' ? normal : size === 'profile' ? profile : community"

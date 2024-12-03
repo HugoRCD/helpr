@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt'
 import { H3Event } from 'h3'
 import jwt from 'jsonwebtoken'
 import prisma, { formatUser } from '~~/server/database/client'
@@ -28,16 +27,14 @@ export async function createUser(userData: createUserInput) {
       statusMessage: 'User already exists',
     })
   }
-  const password = await bcrypt.hash(userData.password, 10)
   const user = await prisma.user.create({
     data: {
       ...userData,
-      password,
     },
   })
   const token = await generateEmailVerificationToken(user.id)
-  const { appDomain } = useRuntimeConfig().public
-  const url = `${appDomain}/verify/user?token=${token}`
+  const { appUrl } = useRuntimeConfig().public
+  const url = `${appUrl}/verify/user?token=${token}`
   await sendGmail({
     template: resetPassword(user.email, url),
     to: user.email,
@@ -101,7 +98,7 @@ export async function setAuthToken(userId: number) {
       username: user.username,
       email: user.email,
     },
-    useRuntimeConfig().private.refreshTokenSecret,
+    useRuntimeConfig().private.refreshSecret,
     { expiresIn: '30d' },
   )
   return await prisma.user.update({

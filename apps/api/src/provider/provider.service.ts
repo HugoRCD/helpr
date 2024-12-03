@@ -1,17 +1,18 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { MailingService } from "../mailing/mailing.service";
-import { ConfigService } from "@nestjs/config";
-import { PrismaService } from "../prisma.service";
-import { UserService } from "../user/user.service";
-import { decrypt, encrypt } from "../utils";
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { MailingService } from '../mailing/mailing.service'
+import { PrismaService } from '../prisma.service'
+import { UserService } from '../user/user.service'
+import { decrypt, encrypt } from '../utils'
 import {
   createActionInput,
   createProviderInput,
   createTriggerInput,
-} from "./provider.type";
+} from './provider.type'
 
 @Injectable()
 export class ProviderService {
+
   constructor(
     private prisma: PrismaService,
     private mailingService: MailingService,
@@ -39,17 +40,17 @@ export class ProviderService {
           },
         },
       },
-    });
+    })
   }
 
   async getCredentials(userId: number) {
-    const user = await this.userService.getUserById(userId);
-    if (!user) throw new BadRequestException("User not found");
+    const user = await this.userService.getUserById(userId)
+    if (!user) throw new BadRequestException('User not found')
     return await this.prisma.providerCredentials.findMany({
       where: {
         userId: user.id,
       },
-    });
+    })
   }
 
   async getCredentialsByProvider(
@@ -57,30 +58,30 @@ export class ProviderService {
     provider: string,
     decrypted = false,
   ) {
-    const user = await this.userService.getUserById(userId);
-    if (!user) throw new BadRequestException("User not found");
+    const user = await this.userService.getUserById(userId)
+    if (!user) throw new BadRequestException('User not found')
     const credentials = await this.prisma.providerCredentials.findFirst({
       where: {
         userId: user.id,
         provider,
       },
-    });
+    })
     if (decrypted) {
-      credentials.accessToken = decrypt(credentials.accessToken);
+      credentials.accessToken = decrypt(credentials.accessToken)
     }
-    return credentials;
+    return credentials
   }
 
   async getRefreshTokenByProvider(userId: number, provider: string) {
-    const user = await this.userService.getUserById(userId);
-    if (!user) throw new BadRequestException("User not found");
+    const user = await this.userService.getUserById(userId)
+    if (!user) throw new BadRequestException('User not found')
     const credentials = await this.prisma.providerCredentials.findFirst({
       where: {
         userId: user.id,
         provider,
       },
-    });
-    return decrypt(credentials.refreshToken);
+    })
+    return decrypt(credentials.refreshToken)
   }
 
   async addCredentials(
@@ -88,7 +89,7 @@ export class ProviderService {
     providerId: string,
     provider: string,
     accessToken: string,
-    refreshToken = "",
+    refreshToken = '',
   ) {
     return await this.prisma.providerCredentials.upsert({
       where: {
@@ -105,7 +106,7 @@ export class ProviderService {
         accessToken: encrypt(accessToken),
         refreshToken: encrypt(refreshToken),
       },
-    });
+    })
   }
 
   async createOrUpdateAction(createActionInput: createActionInput) {
@@ -127,7 +128,7 @@ export class ProviderService {
         name: createActionInput.name,
         providerId: createActionInput.providerId,
       },
-    });
+    })
   }
 
   async createOrUpdateTrigger(createTriggerInput: createTriggerInput) {
@@ -150,7 +151,7 @@ export class ProviderService {
         provider: createTriggerInput.provider,
         providerId: createTriggerInput.providerId,
       },
-    });
+    })
   }
 
   async createOrUpdateProvider(createProviderInput: createProviderInput) {
@@ -168,7 +169,7 @@ export class ProviderService {
         description: createProviderInput.description,
         logo: createProviderInput.logo,
       },
-    });
+    })
   }
 
   async getAvailableActions() {
@@ -176,11 +177,11 @@ export class ProviderService {
       include: {
         variables: true,
       },
-    });
+    })
   }
 
   async getAvailableTriggers() {
-    return await this.prisma.trigger.findMany();
+    return await this.prisma.trigger.findMany()
   }
 
   async getUserProviders(userId: number) {
@@ -190,14 +191,14 @@ export class ProviderService {
           userId,
         },
       },
-    );
+    )
     const isGoogleConnected = providersCredentials.find(
-      (provider) => provider.provider === "google",
-    );
+      (provider) => provider.provider === 'google',
+    )
     const defaultProviders = await this.prisma.provider.findMany({
       where: {
         name: {
-          in: ["Helpr", "DeepL", "OpenAI"],
+          in: ['Helpr', 'DeepL', 'OpenAI'],
         },
       },
       include: {
@@ -218,7 +219,7 @@ export class ProviderService {
           },
         },
       },
-    });
+    })
     const providers = await this.prisma.provider.findMany({
       where: {
         name: {
@@ -247,11 +248,11 @@ export class ProviderService {
           },
         },
       },
-    });
+    })
     const googleProvider = await this.prisma.provider.findMany({
       where: {
         name: {
-          in: ["Calendar", "Sheets", "Gmail"],
+          in: ['Calendar', 'Sheets', 'Gmail'],
         },
       },
       include: {
@@ -272,22 +273,22 @@ export class ProviderService {
           },
         },
       },
-    });
+    })
     if (isGoogleConnected) {
-      return [...providers, ...defaultProviders, ...googleProvider];
-    } else {
-      return [...providers, ...defaultProviders];
-    }
+      return [...providers, ...defaultProviders, ...googleProvider]
+    } 
+    return [...providers, ...defaultProviders]
   }
 
   async deconnectProvider(userId: number, provider: string) {
-    const user = await this.userService.getUserById(userId);
-    if (!user) throw new BadRequestException("User not found");
+    const user = await this.userService.getUserById(userId)
+    if (!user) throw new BadRequestException('User not found')
     return await this.prisma.providerCredentials.deleteMany({
       where: {
         userId,
         provider,
       },
-    });
+    })
   }
+
 }

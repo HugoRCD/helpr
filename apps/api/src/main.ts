@@ -18,8 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder().setTitle('NestJS API')
   const document = SwaggerModule.createDocument(app, config.build())
   SwaggerModule.setup('api', app, document)
-  const prismaService = app.get(PrismaService)
-  await prismaService.enableShutdownHooks(app)
+  await app.get(PrismaService)
   await app.listen(process.env.PORT || 3030)
 }
 bootstrap().then(() => console.log('Server is running'))

@@ -17,7 +17,7 @@ definePageMeta({
       </div>
       <div class="mt-5 flex gap-4 items-center">
         <span class="text-muted">{{ $t("settings.language") }}:</span>
-        <LanguageSelector :is-text="true" />
+        <SettingsLanguageSelector :is-text="true" />
       </div>
     </div>
     <div class="app-card">
@@ -28,7 +28,7 @@ definePageMeta({
         <p>{{ $t("settings.theme_description") }}</p>
       </div>
       <div class="mt-5 flex gap-4">
-        <ThemeSwitcher :is-card="true" class="w-full" />
+        <SettingsThemeSwitcher :is-card="true" class="w-full" />
       </div>
     </div>
   </div>

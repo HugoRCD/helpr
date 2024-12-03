@@ -8,5 +8,6 @@
   "connect_provider": "Connecter une intégration",
   "disconnect": "Déconnecter",
   "already_connected": "Vous êtes déjà connecté à",
-  "save": "Enregistrer"
+  "save": "Enregistrer",
+  "connect_github": "Connecter Github"
 }

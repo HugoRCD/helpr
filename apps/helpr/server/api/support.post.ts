@@ -1,19 +1,11 @@
 import { LinearClient } from '@linear/sdk'
 
-import { H3Event } from 'h3'
+// const helprTeamId = '34b08c67-0366-4cc0-8a32-07d481c045f1'
 
-const linearApiKey = useRuntimeConfig().private.linear.apiKey
-
-const linearClient = new LinearClient({
-  apiKey: linearApiKey,
-})
-
-const helprTeamId = '34b08c67-0366-4cc0-8a32-07d481c045f1'
-
-export default eventHandler(async (event: H3Event) => {
+export default eventHandler(async (event) => {
   const body = await readBody(event)
   const { email, message, ticket_type, phone, fullname } = body
-  await linearClient.createIssue({
+  /*await linearClient.createIssue({
     title: `Support Request: ${fullname}`,
     description: `
       Email: ${email}
@@ -22,7 +14,7 @@ export default eventHandler(async (event: H3Event) => {
     `,
     teamId: helprTeamId,
     labelIds: [ticket_type],
-  })
+  })*/
   return {
     statusCode: 200,
     body: 'OK',

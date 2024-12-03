@@ -14,8 +14,8 @@ export default eventHandler(async (event: H3Event) => {
     })
   }
   const token = await generateEmailVerificationToken(user.id)
-  const { appDomain } = useRuntimeConfig().public
-  const url = `${appDomain}/verify/user?token=${token}`
+  const { appUrl } = useRuntimeConfig().public
+  const url = `${appUrl}/verify/user?token=${token}`
   await sendGmail({
     template: newUser(user.email, url),
     to: user.email,

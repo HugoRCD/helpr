@@ -1,17 +1,18 @@
-import { JwtAuthGuard } from "../../auth/guards/jwt.guard";
-import { RoleGuard } from "../../auth/guards/role.guard";
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
-import { Public } from "../../auth/decorators/public.decorator";
-import { GmailService } from "./gmail.service";
-import { JwtPayload } from "../../auth/auth.service";
-import { CurrentUser } from "../../auth/decorators/current-user.decorator";
-import { createDraftInput, createMailInput } from "./gmail.type";
-import { ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
+import { JwtAuthGuard } from '../../auth/guards/jwt.guard'
+import { RoleGuard } from '../../auth/guards/role.guard'
+import { Public } from '../../auth/decorators/public.decorator'
+import { JwtPayload } from '../../auth/auth.service'
+import { CurrentUser } from '../../auth/decorators/current-user.decorator'
+import { GmailService } from './gmail.service'
+import { createDraftInput, createMailInput } from './gmail.type'
 
 @UseGuards(JwtAuthGuard, RoleGuard)
-@ApiTags("Gmail")
-@Controller("gmail")
+@ApiTags('Gmail')
+@Controller('gmail')
 export class GmailController {
+
   constructor(private readonly sheetService: GmailService) {}
 
   /*  @Public()
@@ -28,19 +29,20 @@ export class GmailController {
     return await this.sheetService.createWebhook(user.id, teamId);
   }*/
 
-  @Post("create-draft")
+  @Post('create-draft')
   async createDrafts(
     @CurrentUser() user: JwtPayload,
     @Body() draft: createDraftInput,
   ) {
-    return await this.sheetService.createDrafts(user.id, draft);
+    return await this.sheetService.createDrafts(user.id, draft)
   }
 
-  @Post("send-mail")
+  @Post('send-mail')
   async sendMail(
     @CurrentUser() user: JwtPayload,
     @Body() mail: createMailInput,
   ) {
-    return await this.sheetService.sendMail(user.id, mail);
+    return await this.sheetService.sendMail(user.id, mail)
   }
+
 }

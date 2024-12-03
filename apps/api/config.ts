@@ -1,10 +1,10 @@
 export const config = () => ({
   env: process.env.APP_ENV,
   jwt: {
-    auth_token_secret: process.env.AUTH_TOKEN_SECRET,
-    refresh_token_secret: process.env.REFRESH_TOKEN_SECRET,
-    auth_token_expiration: process.env.AUTH_TOKEN_EXPIRATION,
-    refresh_token_expiration: process.env.REFRESH_TOKEN_EXPIRATION,
+    auth_token_secret: process.env.NUXT_PRIVATE_AUTH_SECRET,
+    refresh_token_secret: process.env.NUXT_PRIVATE_REFRESH_SECRET,
+    auth_token_expiration: process.env.NUXT_PRIVATE_AUTH_EXPIRATION,
+    refresh_token_expiration: process.env.NUXT_PRIVATE_REFRESH_EXPIRATION,
   },
   mailer: {
     host: process.env.MAILER_HOST,
@@ -27,11 +27,11 @@ export const config = () => ({
     api_key: process.env.DEEPL_API_KEY,
   },
   google: {
-    client_id: process.env.GOOGLE_CLIENT_ID,
-    client_secret: process.env.GOOGLE_CLIENT_SECRET,
+    client_id: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
+    client_secret: process.env.NUXT_OAUTH_GOOGLE_CLIENT_SECRET,
     callback_url: process.env.GOOGLE_CALLBACK_URL,
   },
   frontend_url: process.env.FRONTEND_URL,
   api_url: process.env.API_URL,
   cookie_domain: process.env.COOKIE_DOMAIN,
-});
+})

@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { UserService } from "../../user/user.service";
-import { PrismaService } from "../../prisma.service";
-import { GmailService } from "./gmail.service";
-import { GmailController } from "./gmail.controller";
+import { Module } from '@nestjs/common'
+import { UserService } from '../../user/user.service'
+import { PrismaService } from '../../prisma.service'
+import { GmailService } from './gmail.service'
+import { GmailController } from './gmail.controller'
 
 @Module({
   imports: [],
