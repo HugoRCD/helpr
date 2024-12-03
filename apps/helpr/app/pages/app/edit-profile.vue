@@ -127,7 +127,7 @@ const confirmUpdateModal = ref(false)
           </div>
         </div>
         <div class="mt-5 flex gap-4">
-          <client-only>
+          <ClientOnly>
             <form v-if="!subscription || subscription.length === 0" action="/api/stripe/subscribe" method="post">
               <input type="hidden" name="userId" :value="user.id">
               <button
@@ -149,7 +149,7 @@ const confirmUpdateModal = ref(false)
                 {{ $t("subscription.manage") }}
               </button>
             </form>
-          </client-only>
+          </ClientOnly>
         </div>
       </div>
     </div>

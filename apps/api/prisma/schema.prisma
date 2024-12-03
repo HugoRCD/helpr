@@ -23,8 +23,8 @@ model User {
   refreshToken        String?               @unique
   authToken           String?               @unique
   id                  Int                   @id @default(autoincrement())
-  avatar              String                @default("https://pbs.twimg.com/profile_banners/1862044264516976640/1732829938/600x200")
-  cover               String                @default("https://pbs.twimg.com/profile_images/1862422842714763264/c69Tbt1W_400x400.jpg")
+  avatar              String                @default("https://pbs.twimg.com/profile_images/1862422842714763264/c69Tbt1W_400x400.jpg")
+  cover               String                @default("https://pbs.twimg.com/profile_banners/1862044264516976640/1732829938/600x200")
   providerId          Int?
   emailVerification   EmailVerification?
   flow                Flow[]

@@ -129,11 +129,10 @@ export async function deleteUser(userId: number) {
 }
 
 export async function updateUser(userId: number, updateUserInput: updateUserInput) {
+  console.log(updateUserInput)
   const user = await prisma.user.update({
     where: { id: userId },
-    data: {
-      ...updateUserInput,
-    },
+    data: updateUserInput
   })
   return formatUser(user)
 }
