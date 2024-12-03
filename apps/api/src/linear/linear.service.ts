@@ -110,11 +110,13 @@ export class LinearService {
     accessToken: string,
   ): Promise<ProviderCredentials> {
     const user = await this.userService.getUserById(userId)
+    console.log(user)
     if (!user) throw new BadRequestException('user_not_found')
     const linearClient = new LinearClient({
       apiKey: accessToken,
     })
     const linearUser = await linearClient.viewer
+    console.log(linearUser)
     if (!linearUser) throw new BadRequestException('invalid_credentials')
     return await this.providerService.addCredentials(
       user.id,
