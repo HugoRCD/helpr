@@ -16,12 +16,12 @@ export const generateCode = async (): Promise<string> => {
 }
 
 export function encrypt(toEncrypt) {
-  const secretKey = process.env.AUTH_TOKEN_SECRET
+  const secretKey = process.env.NUXT_PRIVATE_AUTH_SECRET
   return AES.encrypt(toEncrypt, secretKey).toString()
 }
 
 export function decrypt(toDecrypt) {
-  const secretKey = process.env.AUTH_TOKEN_SECRET
+  const secretKey = process.env.NUXT_PRIVATE_AUTH_SECRET
   const bytes = AES.decrypt(toDecrypt, secretKey)
   return bytes.toString(enc.Utf8)
 }

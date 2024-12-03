@@ -3,7 +3,6 @@ export async function addCredentials(provider: string, accessToken: string) {
   const res = await useAPI(url, 'POST', {
     accessToken: accessToken,
   })
-  console.log(res)
 }
 
 export async function removeCredentials(provider: string) {

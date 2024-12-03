@@ -84,14 +84,14 @@ export class ProviderService {
     return decrypt(credentials.refreshToken)
   }
 
-  async addCredentials(
+  addCredentials(
     userId: number,
     providerId: string,
     provider: string,
     accessToken: string,
     refreshToken = '',
   ) {
-    return await this.prisma.providerCredentials.upsert({
+    return this.prisma.providerCredentials.upsert({
       where: {
         providerId: providerId,
       },
@@ -109,8 +109,8 @@ export class ProviderService {
     })
   }
 
-  async createOrUpdateAction(createActionInput: createActionInput) {
-    return await this.prisma.action.upsert({
+  createOrUpdateAction(createActionInput: createActionInput) {
+    return this.prisma.action.upsert({
       where: {
         name: createActionInput.name,
       },
@@ -276,7 +276,7 @@ export class ProviderService {
     })
     if (isGoogleConnected) {
       return [...providers, ...defaultProviders, ...googleProvider]
-    } 
+    }
     return [...providers, ...defaultProviders]
   }
 
