@@ -21,10 +21,10 @@ export const config = () => ({
     bot_access_token: process.env.SLACK_BOT_ACCESS_TOKEN,
   },
   openai: {
-    api_key: process.env.OPENAI_API_KEY,
+    api_key: process.env.NUXT_PRIVATE_OPENAI_API_KEY,
   },
   deepl: {
-    api_key: process.env.DEEPL_API_KEY,
+    api_key: process.env.NUXT_PRIVATE_DEEPL_API_KEY,
   },
   google: {
     client_id: process.env.NUXT_OAUTH_GOOGLE_CLIENT_ID,
