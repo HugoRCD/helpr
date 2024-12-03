@@ -37,7 +37,6 @@
     "@notionhq/client": "2.2.15",
     "@prisma/client": "6.0.1",
     "@slack/web-api": "7.7.0",
-    "@types/cron": "2.4.3",
     "@types/crypto-js": "4.2.2",
     "@types/passport-jwt": "4.0.1",
     "@types/passport-local": "1.0.38",
