@@ -23,7 +23,7 @@
     "@headlessui/vue": "1.7.23",
     "@heroicons/vue": "2.2.0",
     "@linear/sdk": "33.0.0",
-    "@nuxt/devtools": "1.6.1",
+    "@nuxt/devtools": "2.6.4",
     "@nuxt/image": "1.8.1",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/i18n": "9.1.0",
