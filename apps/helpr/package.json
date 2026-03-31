@@ -38,7 +38,7 @@
     "dayjs": "1.11.13",
     "google-auth-library": "9.15.0",
     "jsonwebtoken": "9.0.2",
-    "nuxt": "3.13.2",
+    "nuxt": "3.19.0",
     "nuxt-headlessui": "1.2.0",
     "nuxt-mailer": "^0.11.0",
     "nuxt-vue3-google-signin": "0.0.11",
