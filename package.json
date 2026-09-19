@@ -19,16 +19,16 @@
   },
   "devDependencies": {
     "@hrcd/eslint-config": "edge",
-    "@shelve/cli": "2.8.0",
-    "automd": "0.3.12",
-    "eslint": "9.16.0",
+    "@shelve/cli": "2.12.0",
+    "automd": "0.4.3",
+    "eslint": "9.39.5",
     "turbo": "2.3.3",
-    "typescript": "5.7.2"
+    "typescript": "5.9.3"
   },
   "engines": {
-    "node": ">=22.11.0"
+    "node": ">=22.23.2"
   },
-  "packageManager": "bun@1.1.26",
+  "packageManager": "bun@1.4.2",
   "trustedDependencies": ["@helpr/app", "@helpr/api"],
   "workspaces": [
     "apps/*"
