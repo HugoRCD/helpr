@@ -50,7 +50,7 @@
     "googleapis": "144.0.0",
     "graphql": "16.9.0",
     "mysql": "2.18.1",
-    "mysql2": "3.9.8",
+    "mysql2": "3.23.1",
     "nodemailer": "6.9.16",
     "octokit": "3.1.2",
     "openai": "4.74.0",
